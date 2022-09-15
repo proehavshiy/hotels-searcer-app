@@ -8,7 +8,8 @@ export const decrement = () => ({
   type: types.DECREMENT,
 });
 
-export const incrementAsync = error => ({
+// eslint-disable-next-line no-unused-vars
+export const incrementAsync = (error) => ({
   type: types.INCREMENT_ASYNC,
 });
 
