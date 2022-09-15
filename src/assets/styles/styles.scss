@@ -5,14 +5,24 @@
 @import './fonts';
 
 * {
-  font-family: 'Source Sans Pro',
+  font-family: 'Roboto',
     sans-serif;
 }
 
 body {
-  background: $contentBlockBg;
-
   font-style: normal;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.29;
+  color: $colMainText;
+}
+
+.btn {
+  min-width: 200px;
+  padding: 7px;
+  height: 50px;
+  color: $colBg;
+
+  background: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 }

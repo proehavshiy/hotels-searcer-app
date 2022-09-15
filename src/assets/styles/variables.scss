@@ -1,18 +1,15 @@
 // colors
-$bgColor: #E5E5E5;
-$textColorMain: #3F3F3F;
-$textColorSecondary: #B4B4B4;
-$accentColor: #FF8484;
-$accentColorLight: #FFFFFF;
-$contentBlockBg: #FFFEFB;
-// btn
-$submitColorDisabled: #EEEEEE;
-$submitColorActive: #7BAE73;
+$colBg: #FFFF;
+$colMainText: #424242;
+$colSecondaryText: #878787;
+$colAccent: #41522E;
+$colBorders: #C9CACC;
+$colError: #EB1717;
 
 // mediaQuery breakpoints
 $maxContentWidth: 1439.98+px;
-$b1280: 1279.99+px;
-$b1024: 1023.99+px;
-$b992: 991.98+px;
-$b768: 767.98+px;
-$b480: 479.98+px;
+$br1: 1279.99+px;
+$br2: 1023.99+px;
+$br3: 991.98+px;
+$br4: 767.98+px;
+$br5: 479.98+px;
