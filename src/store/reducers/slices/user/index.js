@@ -4,8 +4,6 @@ import manageLocalStorage from '../../../../utils/manageLocalStorage';
 
 import isLoginedReducer from './isLoginedReducer';
 
-manageLocalStorage('hotels-isLogined', 'get');
-
 const initialState = {
   isLogined: manageLocalStorage('hotels-isLogined', 'get') || false,
 };

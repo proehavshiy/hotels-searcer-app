@@ -34,6 +34,9 @@
       "jsx-a11y"
     ],
     "rules": {
+      "import/prefer-default-export": [
+        "off"
+      ],
       "no-param-reassign": [
         "error",
         {

@@ -9,16 +9,17 @@ const initialState = {
     ids: [],
     items: [],
   },
-}
+};
 
 const hotelsSlice = createSlice({
   name: 'hotels',
   initialState,
   reducers: {
+    initFetchHotels: (state, payload) => payload,
     setFetchedHotels: setFetchedReducer,
     setFavouriteHotels: setFavouriteReducer,
   },
 });
 
-export const { setFetchedHotels, setFavouriteHotels } = hotelsSlice.actions;
+export const { initFetchHotels, setFetchedHotels, setFavouriteHotels } = hotelsSlice.actions;
 export default hotelsSlice.reducer;

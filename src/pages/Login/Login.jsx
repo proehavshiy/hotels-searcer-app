@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import classNames from 'classnames/bind';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import manageLocalStorage from '../../utils/manageLocalStorage';
+
+import { initFetchHotels, setFetchedHotels } from '../../store/reducers/slices/hotels';
+
+import { toggleIsLogined } from '../../store/reducers/slices/user';
 
 import styles from './Login.module.scss';
 
@@ -27,6 +35,17 @@ const validate = (values) => {
 };
 
 function Login() {
+  // const isLogined = useSelector((state) => state.user.isLogined);
+  const dispatch = useDispatch();
+  const city = 'Москва';
+  const date = new Date();
+  const days = 2;
+
+  useEffect(() => {
+    dispatch(initFetchHotels({ city, date, days }));
+    // dispatch({ type: 'foo' });
+  }, [dispatch]);
+
   const formik = useFormik({
     initialValues: {
       login: '',
@@ -35,6 +54,7 @@ function Login() {
     validate,
     onSubmit: (values) => {
       console.log(values);
+      manageLocalStorage('hotels-isLogined', 'set', true);
     },
   });
   return (
