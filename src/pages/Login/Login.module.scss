@@ -70,15 +70,15 @@
 }
 
 .form__input-error {
-  display: none;
+  display: block;
   margin-top: 7px;
   font-size: 12px;
   line-height: 14px;
   color: $colError;
 
-  &_active {
-    display: block;
-  }
+  // &_active {
+  //   display: block;
+  // }
 }
 
 .form__submit {
