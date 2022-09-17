@@ -39,14 +39,6 @@ const validate = (values) => {
 function Login() {
   // const isLogined = useSelector((state) => state.user.isLogined);
   const dispatch = useDispatch();
-  const city = 'Москва';
-  const date = new Date();
-  const days = 2;
-
-  useEffect(() => {
-    dispatch(initFetchHotels({ city, date, days }));
-    // dispatch({ type: 'foo' });
-  }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {

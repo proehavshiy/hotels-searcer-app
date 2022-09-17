@@ -1,0 +1,67 @@
+@import '../../assets/styles/styles.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+
+  &_main {
+    padding: 19px 16px 23px 88px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 64px;
+      height: 64px;
+      background-image: url('../../images/house.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: auto;
+      background-color: rgba(65, 82, 46, 0.05);
+      border-radius: 50%;
+    }
+  }
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__heading {
+  font-size: 17px;
+  letter-spacing: -0.408px;
+}
+
+.card__like {
+  width: 21px;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+
+  & * {
+    @include standartTransition(.1);
+  }
+
+  &:hover * {
+    fill: #EBEBEB;
+  }
+
+  &_active {
+    & * {
+      fill: $colLiked;
+      stroke: $colLiked;
+    }
+
+    &:hover * {
+      fill: $colError;
+      stroke: $colError;
+    }
+  }
+
+}
