@@ -2,19 +2,21 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import manageLocalStorage from '../../../../utils/manageLocalStorage';
 
-import isLoginedReducer from './isLoginedReducer';
+import isLoginedReducer from './setIsLoginedReducer';
 
+// достаю из localStorage начальное значение доступа пользователя
 const initialState = {
-  isLogined: manageLocalStorage('hotels-isLogined', 'get') || false,
+  isLogined: manageLocalStorage('hotels-app', 'get')?.isLogined || false,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleIsLogined: isLoginedReducer,
+    initUserLogin: (state) => state,
+    setIsLogined: isLoginedReducer,
   },
 });
 
-export const { toggleIsLogined } = userSlice.actions;
+export const { initUserLogin, setIsLogined } = userSlice.actions;
 export default userSlice.reducer;

@@ -9,7 +9,7 @@ import manageLocalStorage from '../../utils/manageLocalStorage';
 
 import { initFetchHotels, setFetchedHotels } from '../../store/reducers/slices/hotels';
 
-import { toggleIsLogined } from '../../store/reducers/slices/user';
+import { initUserLogin, toggleIsLogined } from '../../store/reducers/slices/user';
 
 import styles from './Login.module.scss';
 
@@ -53,8 +53,8 @@ function Login() {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
-      manageLocalStorage('hotels-isLogined', 'set', true);
+      // values - {login: Iemail; password: string}
+      dispatch(initUserLogin(values));
     },
   });
   return (
