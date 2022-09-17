@@ -1,15 +1,13 @@
 function setFetchedReducer(state, { payload }) {
-  console.log('fetched payload:', payload);
   const favouritesIds = state.favourites.ids;
   const injectedWithFavoutiteLabelHotels = payload.map((hotel) => {
-    if (favouritesIds.includes(hotel.id)) {
+    if (favouritesIds.includes(hotel.hotelId)) {
       hotel.isFavourite = true;
     } else {
       hotel.isFavourite = false;
     }
     return hotel;
   });
-  console.log('injectedFetchedHotels:', injectedWithFavoutiteLabelHotels);
 
   return {
     ...state,
