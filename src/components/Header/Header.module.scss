@@ -1,0 +1,43 @@
+@import '../../assets/styles/styles.scss';
+
+.header {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-wrapper {
+  @include h1;
+  cursor: pointer;
+  @include standartTransition(.3);
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.logout {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+  letter-spacing: -0.408px;
+
+  color: $colAccent;
+
+  background-color: transparent;
+  cursor: pointer;
+  @include standartTransition(.3);
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.logout-image {
+  margin-left: 15px;
+}
