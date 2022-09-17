@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import {
   put, takeEvery, delay,
 } from 'redux-saga/effects';
@@ -15,6 +16,7 @@ function* workerUserLogin({ payload }) {
     yield put(setIsLoading(true));
     // мок асинхронного запроса к серверу при логине
     yield delay(2000);
+    // throw new Error('fgfgfgfg')
     // диспатч статуса логина - залогинен
     yield put(setIsLogined(true));
   } catch (error) {

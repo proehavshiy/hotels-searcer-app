@@ -1,5 +1,11 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable no-cond-assign */
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
+import {
+  Routes, Route, Navigate, useNavigate, useLocation,
+} from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 
@@ -22,6 +28,16 @@ const cn = classNames.bind(styles);
 function App() {
   // const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state.duty);
+  const { isLogined } = useSelector((state) => state.user);
+
+  const history = useNavigate();
+  const currentPage = useLocation().pathname;
+
+  useEffect(() => {
+    if (currentPage === '/' && isLogined) {
+      history('/hotels');
+    }
+  }, [history, isLogined, currentPage]);
 
   return (
     <div className={cn('app')}>
@@ -32,8 +48,7 @@ function App() {
         />
         <Route
           path='/hotels'
-          // element={ if not logined ? <Navigate to='/' replace /> : <BookPage />}
-          element={<Hotels />}
+          element={isLogined ? <Hotels /> : <Navigate to='/' replace={true} />}
         />
         <Route
           path='*'

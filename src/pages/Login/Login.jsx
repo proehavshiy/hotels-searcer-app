@@ -5,6 +5,8 @@ import classNames from 'classnames/bind';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import manageLocalStorage from '../../utils/manageLocalStorage';
 
 import { initFetchHotels, setFetchedHotels } from '../../store/reducers/slices/hotels';
