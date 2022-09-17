@@ -3,10 +3,17 @@ import { Routes, Route } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 
+import { useSelector } from 'react-redux';
+
 import Login from '../../pages/Login/Login';
 import Hotels from '../../pages/Hotels/Hotels';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
-// import { useSelector, useDispatch } from 'react-redux';
+
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
+
+import Modal from '../UI/Modal/Modal';
+
+// import { setError } from '../../store/reducers/slices/duty';
 
 import styles from './App.module.scss';
 
@@ -14,7 +21,7 @@ const cn = classNames.bind(styles);
 
 function App() {
   // const dispatch = useDispatch();
-  // const counter = useSelector((state) => state.count);
+  const { isLoading, error } = useSelector((state) => state.duty);
 
   return (
     <div className={cn('app')}>
@@ -33,6 +40,16 @@ function App() {
           element={<ErrorPage />}
         />
       </Routes>
+      <Modal
+        isOpen={isLoading}
+      >
+        <LoadingSpinner />
+      </Modal>
+      <Modal
+        isOpen={error}
+      >
+        <div>{error}</div>
+      </Modal>
     </div>
   );
 }

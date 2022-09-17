@@ -9,7 +9,7 @@ import manageLocalStorage from '../../utils/manageLocalStorage';
 
 import { initFetchHotels, setFetchedHotels } from '../../store/reducers/slices/hotels';
 
-import { initUserLogin, toggleIsLogined } from '../../store/reducers/slices/user';
+import { initUserLogin } from '../../store/reducers/slices/user';
 
 import styles from './Login.module.scss';
 

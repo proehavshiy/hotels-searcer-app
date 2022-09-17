@@ -1,4 +1,6 @@
-import { put, takeEvery, delay } from 'redux-saga/effects';
+import {
+  put, takeEvery, delay,
+} from 'redux-saga/effects';
 
 import { setError, setIsLoading } from '../reducers/slices/duty';
 
@@ -23,6 +25,10 @@ function* workerUserLogin({ payload }) {
   } finally {
     // загрузка завершилась
     yield put(setIsLoading(false));
+
+    // сброс ошибки через 2 сек НО надо бы как-то это вызывать только в случае ошибки
+    yield delay(2000);
+    yield yield put(setError(null));
   }
 }
 
