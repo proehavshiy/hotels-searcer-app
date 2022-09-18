@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
@@ -10,6 +11,10 @@ import { initFetchHotels } from '../../store/reducers/slices/hotels';
 
 import Card from '../../components/Card/Card';
 
+import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
+
+import Slider from '../../components/Slider/Slider';
+
 import styles from './Hotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -19,40 +24,64 @@ function Hotels() {
   const searchParams = useSelector((state) => state.searchParams);
   const { fetched, favourites } = useSelector((state) => state.hotels);
 
+  const { date, city } = searchParams;
+
+  // const date111 = new Date().toLocaleDateString('ru-RU', {
+  //   day: 'numeric',
+  //   month: 'long',
+  //   year: 'numeric',
+  // });
+
+  // console.log(date111);
+
   // начальная подгрузка отелей
   useEffect(() => {
     dispatch(initFetchHotels(searchParams));
   }, [dispatch]);
+
+  function getHotelWordDeclination(formatter) {
+    if (formatter === 0 || formatter >= 5) {
+      return 'отелей';
+    }
+    if (formatter === 1) {
+      return 'отель';
+    }
+    return 'отеля';
+  }
 
   return (
     <>
       <Header />
       <main className={cn('hotels-page')}>
         <div className={cn('content-wrapper')}>
-          <aside className='aside'>
+          <div className='aside'>
             <div className='search-form'>
               поисковая форма
             </div>
             <div className='favourites'>
               избранное
             </div>
-          </aside>
-          <div className='main-content'>
-            <div className='heading-block'>
-              <h1 className='heading'>
+          </div>
+          <div className={cn('main-content')}>
+            <div className={cn('heading-block')}>
+              <h1 className={cn('heading')}>
                 <span>Отели</span>
-                Москва
+                {city}
               </h1>
-              <div className='date'>
-                07 июля 2020
+              <div className={cn('date')}>
+                {getFormattedRUDate(date)}
               </div>
             </div>
-            <div className='carusel'>карусель</div>
-            <div className='main-block'>
-              <h2 className='main-block__heading'>
-                Добавлено в Избранное: 3 отеля
+            <Slider />
+            <div className={cn('main-block')}>
+              <h2 className={cn('main-block__heading')}>
+                Добавлено в Избранное:
+                {' '}
+                <span>{favourites.ids.length}</span>
+                {' '}
+                {getHotelWordDeclination(favourites.ids.length)}
               </h2>
-              <ul className='hotels'>
+              <ul className={cn('hotels')}>
                 {fetched.map((hotel) => (
                   <Card
                     type={'main'}

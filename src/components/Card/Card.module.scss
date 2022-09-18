@@ -7,7 +7,7 @@
   border-bottom: 1px solid rgba(135, 135, 135, 0.2);
 
   &_main {
-    padding: 19px 16px 23px 88px;
+    padding: 19px 16px 16px 88px;
     position: relative;
 
     &::before {
@@ -29,6 +29,7 @@
 }
 
 .card__header {
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -64,4 +65,78 @@
     }
   }
 
+}
+
+.card__dates {
+  margin-bottom: 5px;
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.57;
+  letter-spacing: -0.408px;
+  color: $colSecondaryText;
+}
+
+.card__startDate {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    margin-left: 15px;
+    background: $colSecondaryText;
+    width: 9px;
+    height: 1px;
+  }
+}
+
+.card__days {}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card__stars {
+  display: flex;
+
+  & *:not(:last-of-type) {
+    margin-right: 4px;
+  }
+}
+
+.card__star {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  &_active {
+    background-image: url('../../images/star.svg');
+  }
+
+  &_default {
+    background-image: url('../../images/star_default.svg');
+  }
+}
+
+.card__price {
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: -0.408px;
+  color: $colSecondaryText;
+
+  &>span {
+    margin-left: 8px;
+    font-size: 17px;
+    text-align: right;
+    letter-spacing: -0.408px;
+
+    color: #424242;
+  }
 }

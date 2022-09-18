@@ -1,12 +1,18 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-plusplus */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 
+import uniqid from 'uniqid';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteFavouriteHotels, setFavouriteHotels } from '../../store/reducers/slices/hotels';
+
+import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
 
 import styles from './Card.module.scss';
 
@@ -16,8 +22,9 @@ function Card({
   type, data,
 }) {
   const {
-    stars, name, priceAvg, hotelId,
+    stars, hotelName, priceAvg, hotelId,
   } = data;
+
   const { date, days } = useSelector((state) => state.searchParams);
 
   const dispatch = useDispatch();
@@ -32,10 +39,33 @@ function Card({
     }
     setIsLiked(!isLiked);
   }
+
+  function getDayWordDeclination(formatter) {
+    if (formatter === 0 || formatter >= 5) {
+      return 'дней';
+    }
+    if (formatter === 1) {
+      return 'день';
+    }
+    return 'дня';
+  }
+
+  function renderStars(numOfStars) {
+    const markupContainer = [];
+    for (let index = 0; index < 5; index++) {
+      if (index < numOfStars) {
+        markupContainer.push(<span className={cn('card__star', 'card__star_active')} key={uniqid()} />);
+      } else {
+        markupContainer.push(<span className={cn('card__star', 'card__star_default')} key={uniqid()} />);
+      }
+    }
+    return markupContainer;
+  }
+
   return (
     <li className={cn('card', `card_${type}`)}>
       <div className={cn('card__header')}>
-        <h3 className={cn('card__heading')}>{name}</h3>
+        <h3 className={cn('card__heading')}>{hotelName}</h3>
         <button className={cn('card__like', { card__like_active: isLiked })} type='button' onClick={handleLike}>
           <svg width='23' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -49,25 +79,26 @@ function Card({
         </button>
       </div>
       <div className={cn('card__dates')}>
-        <span className={cn('card__startDate')}>{date.toISOString().split('T')[0]}</span>
-        {' '}
-        -
-        {' '}
+        <span className={cn('card__startDate')}>{getFormattedRUDate(date)}</span>
         <span className={cn('card__days')}>
           {days}
           {' '}
-          день
+          {getDayWordDeclination(days)}
         </span>
       </div>
       <div className={cn('card__footer')}>
-        <div className={cn('card__stars')}>{stars}</div>
+        <div className={cn('card__stars')}>
+          {renderStars(stars).map((star) => star)}
+        </div>
         <div className={cn('card__price')}>
           Price:
           {' '}
           <span>
-            {priceAvg}
-            {' '}
-            ₽
+            {priceAvg.toLocaleString('ru-RU', {
+              style: 'currency',
+              currency: 'RUB',
+              minimumFractionDigits: 0,
+            })}
           </span>
         </div>
       </div>

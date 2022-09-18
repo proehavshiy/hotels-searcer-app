@@ -12,3 +12,84 @@
   @include contentBlock;
   flex-direction: row;
 }
+
+.main-content {
+  min-width: 664px;
+}
+
+.heading-block {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.19;
+
+  &>span {
+    position: relative;
+    margin-right: 20px;
+
+    &::after {
+      content: '';
+      margin-left: 20px;
+      display: inline-block;
+      width: 9px;
+      height: 17px;
+      background-image: url('../../images/hotels_heading_vector.svg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.date {
+  font-size: 24px;
+  line-height: 1.17;
+  text-align: right;
+
+  color: #41522E;
+}
+
+.main-block {
+  height: 100%;
+  max-height: calc(100% - 240px);
+
+  // &::-webkit-scrollbar {
+  //   width: 5px;
+  // }
+}
+
+.main-block__heading {
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: -0.408px;
+  color: $colMainText;
+
+  &>span {
+    font-weight: 500;
+    color: $colAccent;
+  }
+}
+
+.hotels {
+  padding-right: 14px;
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
+
+  // стили для скроллбара и трека
+  &::-webkit-scrollbar {
+    width: 2px;
+    background: #E7E7E7;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #41522E;
+    border-radius: 2px;
+  }
+}

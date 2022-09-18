@@ -6,7 +6,7 @@ const searchParamsSlice = createSlice({
   name: 'user',
   initialState: {
     city: 'Москва',
-    date: new Date(),
+    date: Date.now(),
     days: 1,
   },
   reducers: {
