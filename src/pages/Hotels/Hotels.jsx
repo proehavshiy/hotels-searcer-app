@@ -57,7 +57,56 @@ function Hotels() {
         <div className={cn('content-wrapper')}>
           <div className='aside'>
             <div className='search-form'>
-              поисковая форма
+              <form className={cn('form')}>
+                <h1 className={cn('form__heading')}>Simple Hotel Check</h1>
+                <div className={cn('form__fields')}>
+                  <fieldset className={cn('form__input-section')}>
+                    <label htmlFor='login' className={cn('form__label')}>Локация</label>
+                    <input
+                      type='text'
+                      name='location'
+                      id='location'
+                      className={cn('form__input')}
+                    // value={formik.values.login}
+                    // onChange={formik.handleChange}
+                    />
+                    {/* {formik.errors.login
+                      ? <span className={cn('form__input-error')}>{formik.errors.login}</span>
+                      : null} */}
+                  </fieldset>
+                  <fieldset className={cn('form__input-section')}>
+                    <label htmlFor='password' className={cn('form__label')}>Дата заселения</label>
+                    <input
+                      type='date'
+                      name='date'
+                      id='date'
+                      className={cn('form__input')}
+                    // value={formik.values.password}
+                    // onChange={formik.handleChange}
+                    />
+                    {/* {formik.errors.password
+                      ? <span className={cn('form__input-error')}>{formik.errors.password}</span>
+                      : null} */}
+                  </fieldset>
+                  <fieldset className={cn('form__input-section')}>
+                    <label htmlFor='password' className={cn('form__label')}>Количество дней</label>
+                    <input
+                      type='number'
+                      name='days'
+                      id='days'
+                      className={cn('form__input')}
+                    // value={formik.values.password}
+                    // onChange={formik.handleChange}
+                    />
+                    {/* {formik.errors.password
+                      ? <span className={cn('form__input-error')}>{formik.errors.password}</span>
+                      : null} */}
+                  </fieldset>
+                </div>
+                <button className={cn('form__submit')} type='submit'>
+                  Найти
+                </button>
+              </form>
             </div>
             <div className='favourites'>
               избранное

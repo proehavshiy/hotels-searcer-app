@@ -1,0 +1,40 @@
+@import '../../../assets/styles/styles.scss';
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+}
+
+.label {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+
+.input {
+  padding: 15px;
+  border: 1px solid $colBorders;
+  border-radius: 4px;
+}
+
+.input-error {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $colError;
+
+  // &_active {
+  //   display: block;
+  // }
+}
