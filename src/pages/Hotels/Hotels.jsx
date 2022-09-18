@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,6 +15,8 @@ import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
 
 import Slider from '../../components/Slider/Slider';
 
+import HotelForm from '../../components/HotelForm/HotelForm';
+
 import styles from './Hotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -22,17 +24,14 @@ const cn = classNames.bind(styles);
 function Hotels() {
   const dispatch = useDispatch();
   const searchParams = useSelector((state) => state.searchParams);
-  const { fetched, favourites, images } = useSelector((state) => state.hotels);
+  const { fetched, favourites } = useSelector((state) => state.hotels);
 
-  const { date, city } = searchParams;
+  // const { date, city, days } = searchParams;
+  // console.log('date', date)
+  // console.log('days', days)
 
-  // const date111 = new Date().toLocaleDateString('ru-RU', {
-  //   day: 'numeric',
-  //   month: 'long',
-  //   year: 'numeric',
-  // });
-
-  // console.log(date111);
+  // const [cityStatic] = useState(city);
+  // const [dateStatic] = useState(date);
 
   // начальная подгрузка отелей и картинок для слайдера
   useEffect(() => {
@@ -55,58 +54,9 @@ function Hotels() {
       <Header />
       <main className={cn('hotels-page')}>
         <div className={cn('content-wrapper')}>
-          <div className='aside'>
+          <div className={cn('aside')}>
             <div className='search-form'>
-              <form className={cn('form')}>
-                <h1 className={cn('form__heading')}>Simple Hotel Check</h1>
-                <div className={cn('form__fields')}>
-                  <fieldset className={cn('form__input-section')}>
-                    <label htmlFor='login' className={cn('form__label')}>Локация</label>
-                    <input
-                      type='text'
-                      name='location'
-                      id='location'
-                      className={cn('form__input')}
-                    // value={formik.values.login}
-                    // onChange={formik.handleChange}
-                    />
-                    {/* {formik.errors.login
-                      ? <span className={cn('form__input-error')}>{formik.errors.login}</span>
-                      : null} */}
-                  </fieldset>
-                  <fieldset className={cn('form__input-section')}>
-                    <label htmlFor='password' className={cn('form__label')}>Дата заселения</label>
-                    <input
-                      type='date'
-                      name='date'
-                      id='date'
-                      className={cn('form__input')}
-                    // value={formik.values.password}
-                    // onChange={formik.handleChange}
-                    />
-                    {/* {formik.errors.password
-                      ? <span className={cn('form__input-error')}>{formik.errors.password}</span>
-                      : null} */}
-                  </fieldset>
-                  <fieldset className={cn('form__input-section')}>
-                    <label htmlFor='password' className={cn('form__label')}>Количество дней</label>
-                    <input
-                      type='number'
-                      name='days'
-                      id='days'
-                      className={cn('form__input')}
-                    // value={formik.values.password}
-                    // onChange={formik.handleChange}
-                    />
-                    {/* {formik.errors.password
-                      ? <span className={cn('form__input-error')}>{formik.errors.password}</span>
-                      : null} */}
-                  </fieldset>
-                </div>
-                <button className={cn('form__submit')} type='submit'>
-                  Найти
-                </button>
-              </form>
+              <HotelForm />
             </div>
             <div className='favourites'>
               избранное
@@ -116,10 +66,10 @@ function Hotels() {
             <div className={cn('heading-block')}>
               <h1 className={cn('heading')}>
                 <span>Отели</span>
-                {city}
+                {fetched.info.city}
               </h1>
               <div className={cn('date')}>
-                {getFormattedRUDate(date)}
+                {getFormattedRUDate(fetched.info.date)}
               </div>
             </div>
             <div className={cn('main-content__slider')}>
@@ -134,10 +84,13 @@ function Hotels() {
                 {getHotelWordDeclination(favourites.ids.length)}
               </h2>
               <ul className={cn('hotels')}>
-                {fetched.map((hotel) => (
+                {fetched.hotels.length && fetched.hotels.map((hotel) => (
                   <Card
                     type={'main'}
                     data={hotel}
+                    info={fetched.info}
+                    // startDate={new Date(fetched.info.date)}
+                    // amountOfDays={fetched.info.days}
                     key={hotel.hotelId}
                   />
                 ))}

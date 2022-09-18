@@ -1,7 +1,11 @@
 function setFetchedReducer(state, { payload }) {
   return {
     ...state,
-    fetched: payload,
+    fetched: {
+      hotels: payload.hotels,
+      info: payload.info,
+    },
+
   };
 }
 

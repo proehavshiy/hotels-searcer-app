@@ -1,4 +1,4 @@
-function setSearchParamsReducer(state, { payload: { city, date, days } }) {
+function setSearchParamsReducer(state, { payload: { city = state.city, date = state.date, days = state.days } }) {
   return {
     ...state,
     city,

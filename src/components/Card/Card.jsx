@@ -1,8 +1,5 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-plusplus */
 /* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable no-plusplus */
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 
@@ -18,16 +15,13 @@ import styles from './Card.module.scss';
 
 const cn = classNames.bind(styles);
 
-function Card({
-  type, data,
-}) {
+function Card({ type, data, info }) {
+  const dispatch = useDispatch();
   const {
     stars, hotelName, priceAvg, hotelId,
   } = data;
+  const { date, days } = info;
 
-  const { date, days } = useSelector((state) => state.searchParams);
-
-  const dispatch = useDispatch();
   const { ids } = useSelector((state) => state.hotels.favourites);
   const [isLiked, setIsLiked] = useState(ids.includes(hotelId));
 
@@ -44,10 +38,10 @@ function Card({
     if (formatter === 0 || formatter >= 5) {
       return 'дней';
     }
-    if (formatter === 1) {
-      return 'день';
+    if (formatter > 1) {
+      return 'дня';
     }
-    return 'дня';
+    return 'день';
   }
 
   function renderStars(numOfStars) {
@@ -79,7 +73,7 @@ function Card({
         </button>
       </div>
       <div className={cn('card__dates')}>
-        <span className={cn('card__startDate')}>{getFormattedRUDate(date)}</span>
+        <span className={cn('card__startDate')}>{getFormattedRUDate(new Date(date))}</span>
         <span className={cn('card__days')}>
           {days}
           {' '}

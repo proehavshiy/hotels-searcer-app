@@ -6,7 +6,10 @@ import deleteFavouriteReducer from './deleteFavouriteReducer';
 import setFetchedImagesReducer from './setFetchedImagesReducer';
 
 const initialState = {
-  fetched: [],
+  fetched: {
+    hotels: [],
+    info: { city: '', date: null, days: null },
+  },
   favourites: {
     ids: [],
     items: [],
