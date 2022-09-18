@@ -15,12 +15,11 @@ import styles from './Card.module.scss';
 
 const cn = classNames.bind(styles);
 
-function Card({ type, data, info }) {
+function Card({ type, data }) {
   const dispatch = useDispatch();
   const {
-    stars, hotelName, priceAvg, hotelId,
+    stars, hotelName, priceAvg, hotelId, info: { date, days },
   } = data;
-  const { date, days } = info;
 
   const { ids } = useSelector((state) => state.hotels.favourites);
   const [isLiked, setIsLiked] = useState(ids.includes(hotelId));

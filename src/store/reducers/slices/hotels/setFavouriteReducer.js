@@ -1,5 +1,5 @@
 function setFavouriteReducer(state, { payload }) {
-  const favouriteHotel = state.fetched.find((hotel) => hotel.hotelId === payload);
+  const favouriteHotel = state.fetched.hotels.find((hotel) => hotel.hotelId === payload);
 
   return {
     ...state,

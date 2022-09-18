@@ -17,6 +17,8 @@ import Slider from '../../components/Slider/Slider';
 
 import HotelForm from '../../components/HotelForm/HotelForm';
 
+import FavouriteHotels from '../../components/FavouriteHotels/FavouriteHotels';
+
 import styles from './Hotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -58,9 +60,7 @@ function Hotels() {
             <div className='search-form'>
               <HotelForm />
             </div>
-            <div className='favourites'>
-              избранное
-            </div>
+            <FavouriteHotels />
           </div>
           <div className={cn('main-content')}>
             <div className={cn('heading-block')}>
@@ -88,9 +88,6 @@ function Hotels() {
                   <Card
                     type={'main'}
                     data={hotel}
-                    info={fetched.info}
-                    // startDate={new Date(fetched.info.date)}
-                    // amountOfDays={fetched.info.days}
                     key={hotel.hotelId}
                   />
                 ))}
