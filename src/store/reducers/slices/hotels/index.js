@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import setFetchedReducer from './setFetchedReducer';
 import setFavouriteReducer from './setFavouriteReducer';
 import deleteFavouriteReducer from './deleteFavouriteReducer';
+import setFetchedImagesReducer from './setFetchedImagesReducer';
 
 const initialState = {
   fetched: [],
@@ -10,6 +11,7 @@ const initialState = {
     ids: [],
     items: [],
   },
+  images: [],
 };
 
 const hotelsSlice = createSlice({
@@ -20,10 +22,12 @@ const hotelsSlice = createSlice({
     setFetchedHotels: setFetchedReducer,
     setFavouriteHotels: setFavouriteReducer,
     deleteFavouriteHotels: deleteFavouriteReducer,
+    initFetchImages: (state) => state,
+    setFetchedImages: setFetchedImagesReducer,
   },
 });
 
 export const {
-  initFetchHotels, setFetchedHotels, setFavouriteHotels, deleteFavouriteHotels,
+  initFetchHotels, setFetchedHotels, setFavouriteHotels, deleteFavouriteHotels, initFetchImages, setFetchedImages,
 } = hotelsSlice.actions;
 export default hotelsSlice.reducer;

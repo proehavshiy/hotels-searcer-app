@@ -7,7 +7,7 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../../components/Header/Header';
-import { initFetchHotels } from '../../store/reducers/slices/hotels';
+import { initFetchHotels, initFetchImages } from '../../store/reducers/slices/hotels';
 
 import Card from '../../components/Card/Card';
 
@@ -22,7 +22,7 @@ const cn = classNames.bind(styles);
 function Hotels() {
   const dispatch = useDispatch();
   const searchParams = useSelector((state) => state.searchParams);
-  const { fetched, favourites } = useSelector((state) => state.hotels);
+  const { fetched, favourites, images } = useSelector((state) => state.hotels);
 
   const { date, city } = searchParams;
 
@@ -34,9 +34,10 @@ function Hotels() {
 
   // console.log(date111);
 
-  // начальная подгрузка отелей
+  // начальная подгрузка отелей и картинок для слайдера
   useEffect(() => {
     dispatch(initFetchHotels(searchParams));
+    dispatch(initFetchImages());
   }, [dispatch]);
 
   function getHotelWordDeclination(formatter) {
@@ -72,7 +73,9 @@ function Hotels() {
                 {getFormattedRUDate(date)}
               </div>
             </div>
-            <Slider />
+            <div className={cn('main-content__slider')}>
+              <Slider />
+            </div>
             <div className={cn('main-block')}>
               <h2 className={cn('main-block__heading')}>
                 Добавлено в Избранное:
