@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import uniqid from 'uniqid';
@@ -32,6 +33,11 @@ function Card({ type, data }) {
     }
     setIsLiked(!isLiked);
   }
+
+  useEffect(() => {
+    // убирать лайк из найденных при удалении отеля из избранного
+    if (!ids.includes(hotelId)) setIsLiked(false);
+  }, [ids, hotelId]);
 
   function getDayWordDeclination(formatter) {
     if (formatter === 0 || formatter >= 5) {
