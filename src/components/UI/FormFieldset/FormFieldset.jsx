@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import classNames from 'classnames/bind';
 
@@ -10,19 +11,21 @@ function FormFieldset({
 }) {
   return (
     <fieldset className={cn('fieldset')}>
-      <label htmlFor={id} className={cn('label')}>{labelPlaceholder}</label>
+      <label htmlFor={id} className={cn('label', { label_error: errorMessage })}>
+        {labelPlaceholder}
+      </label>
       <input
         type={type}
         name={name}
         id={id}
-        className={cn('input')}
+        className={cn('input', { input_error: errorMessage })}
         value={value}
         onChange={onChange}
         onBlur={onBlur}
       />
-      {isTouched && errorMessage
-        ? <span className={cn('input-error')}>{errorMessage}</span>
-        : null}
+      <span className={cn('input-error', { 'input-error_active': isTouched && errorMessage })}>
+        {errorMessage}
+      </span>
     </fieldset>
   );
 }
