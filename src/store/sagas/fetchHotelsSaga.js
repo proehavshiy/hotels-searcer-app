@@ -15,6 +15,8 @@ function* workerFetchHotels({ payload }) {
     yield put(setIsLoading(true));
     // вызов сайд-эффекта - запрос к серверу
     const hotels = yield call(fetchHotels, { city, date, days });
+    // если сервер вернул ошибку
+    if (hotels.status === 'error') throw new Error(hotels.message);
     // диспатч экшна с пейлоадом
     yield put(setFetchedHotels({ hotels, info: { city, date, days } }));
   } catch (error) {

@@ -68,15 +68,19 @@ function Hotels() {
                 {' '}
                 {getRUDeclination('hotel', favourites.ids.length)}
               </h2>
-              <ul className={cn('hotels')}>
-                {fetched.hotels.length && fetched.hotels.map((hotel) => (
-                  <Card
-                    type={'main'}
-                    data={hotel}
-                    key={hotel.hotelId}
-                  />
-                ))}
-              </ul>
+              {fetched.hotels.length
+                ? (
+                  <ul className={cn('hotels')}>
+                    {fetched.hotels.map((hotel) => (
+                      <Card
+                        type={'main'}
+                        data={hotel}
+                        key={hotel.hotelId}
+                      />
+                    ))}
+                  </ul>
+                )
+                : <div className={cn('hotels-dummy')}>Отели не найдены</div>}
             </div>
           </div>
         </div>
