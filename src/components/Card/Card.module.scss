@@ -104,30 +104,30 @@
   align-items: flex-end;
 }
 
-.card__stars {
-  display: flex;
+// .card__stars {
+//   display: flex;
 
-  & *:not(:last-of-type) {
-    margin-right: 4px;
-  }
-}
+//   & *:not(:last-of-type) {
+//     margin-right: 4px;
+//   }
+// }
 
-.card__star {
-  width: 17px;
-  height: 17px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
+// .card__star {
+//   width: 17px;
+//   height: 17px;
+//   display: inline-block;
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   background-size: contain;
 
-  &_active {
-    background-image: url('../../images/star.svg');
-  }
+//   &_active {
+//     background-image: url('../../images/star.svg');
+//   }
 
-  &_default {
-    background-image: url('../../images/star_default.svg');
-  }
-}
+//   &_default {
+//     background-image: url('../../images/star_default.svg');
+//   }
+// }
 
 .card__price {
   font-weight: 300;

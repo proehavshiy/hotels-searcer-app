@@ -1,10 +1,6 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-
-import uniqid from 'uniqid';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,6 +13,7 @@ import { getDayDeclination } from '../../utils/getDayDeclination';
 import { getFormattedRUCurrency } from '../../utils/getFormattedRUCurrency';
 
 import styles from './Card.module.scss';
+import HotelStars from './HotelStars/HotelStars';
 
 const cn = classNames.bind(styles);
 
@@ -47,18 +44,6 @@ function Card({ type, data }) {
     }
   }, [ids, hotelId]);
 
-  function renderStars(numOfStars) {
-    const markupContainer = [];
-    for (let index = 0; index < 5; index++) {
-      if (index < numOfStars) {
-        markupContainer.push(<span className={cn('card__star', 'card__star_active')} key={uniqid()} />);
-      } else {
-        markupContainer.push(<span className={cn('card__star', 'card__star_default')} key={uniqid()} />);
-      }
-    }
-    return markupContainer;
-  }
-
   return (
     <li className={cn('card', `card_${type}`)}>
       <div className={cn('card__header')}>
@@ -83,9 +68,7 @@ function Card({ type, data }) {
         </span>
       </div>
       <div className={cn('card__footer')}>
-        <div className={cn('card__stars')}>
-          {renderStars(stars).map((star) => star)}
-        </div>
+        <HotelStars stars={stars} />
         <div className={cn('card__price')}>
           Price:
           {' '}
