@@ -1,5 +1,6 @@
 export const getFormattedRUDate = (date) => {
-  const fDate = new Date(date);
+  const fDate = typeof date === 'number' ? new Date(date) : date;
+
   return fDate.toLocaleDateString('ru', {
     day: 'numeric',
     month: 'long',

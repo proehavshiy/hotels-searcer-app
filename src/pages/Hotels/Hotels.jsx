@@ -69,7 +69,7 @@ function Hotels() {
                 {fetched.info.city}
               </h1>
               <div className={cn('date')}>
-                {getFormattedRUDate(fetched.info.date)}
+                {fetched.info.date && getFormattedRUDate(fetched.info.date)}
               </div>
             </div>
             <div className={cn('main-content__slider')}>

@@ -1,6 +1,6 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
-/* eslint-disable no-plusplus */
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
@@ -12,6 +12,10 @@ import { deleteFavouriteHotels, setFavouriteHotels } from '../../store/reducers/
 
 import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
 
+import { getDayDeclination } from '../../utils/getDayDeclination';
+
+import { getFormattedRUCurrency } from '../../utils/getFormattedRUCurrency';
+
 import styles from './Card.module.scss';
 
 const cn = classNames.bind(styles);
@@ -22,6 +26,7 @@ function Card({ type, data }) {
     stars, hotelName, priceAvg, hotelId, info: { date, days },
   } = data;
 
+  // стейт с айдишками избранных-лайкнутых
   const { ids } = useSelector((state) => state.hotels.favourites);
   const [isLiked, setIsLiked] = useState(ids.includes(hotelId));
 
@@ -31,23 +36,16 @@ function Card({ type, data }) {
     } else {
       dispatch(setFavouriteHotels(hotelId));
     }
-    setIsLiked(!isLiked);
   }
 
   useEffect(() => {
-    // убирать лайк из найденных при удалении отеля из избранного
-    if (!ids.includes(hotelId)) setIsLiked(false);
+    // Переключение лайка
+    if (ids.includes(hotelId)) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
   }, [ids, hotelId]);
-
-  function getDayWordDeclination(formatter) {
-    if (formatter === 0 || formatter >= 5) {
-      return 'дней';
-    }
-    if (formatter > 1) {
-      return 'дня';
-    }
-    return 'день';
-  }
 
   function renderStars(numOfStars) {
     const markupContainer = [];
@@ -78,11 +76,10 @@ function Card({ type, data }) {
         </button>
       </div>
       <div className={cn('card__dates')}>
-        <span className={cn('card__startDate')}>{getFormattedRUDate(new Date(date))}</span>
+        <span className={cn('card__startDate')}>{getFormattedRUDate(date)}</span>
         <span className={cn('card__days')}>
           {days}
-          {' '}
-          {getDayWordDeclination(days)}
+          {getDayDeclination(days)}
         </span>
       </div>
       <div className={cn('card__footer')}>
@@ -92,13 +89,7 @@ function Card({ type, data }) {
         <div className={cn('card__price')}>
           Price:
           {' '}
-          <span>
-            {priceAvg.toLocaleString('ru-RU', {
-              style: 'currency',
-              currency: 'RUB',
-              minimumFractionDigits: 0,
-            })}
-          </span>
+          <span>{getFormattedRUCurrency(priceAvg)}</span>
         </div>
       </div>
     </li>
