@@ -6,11 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteFavouriteHotels, setFavouriteHotels } from '../../store/reducers/slices/hotels';
 
-import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
+import getRUDeclination from '../../utils/wordDeclinations';
 
-import { getDayDeclination } from '../../utils/getDayDeclination';
-
-import { getFormattedRUCurrency } from '../../utils/getFormattedRUCurrency';
+import format from '../../utils/formatValues';
 
 import styles from './Card.module.scss';
 import HotelStars from './HotelStars/HotelStars';
@@ -61,10 +59,10 @@ function Card({ type, data }) {
         </button>
       </div>
       <div className={cn('card__dates')}>
-        <span className={cn('card__startDate')}>{getFormattedRUDate(date)}</span>
+        <span className={cn('card__startDate')}>{format('date', date)}</span>
         <span className={cn('card__days')}>
           {days}
-          {getDayDeclination(days)}
+          {getRUDeclination('day', days)}
         </span>
       </div>
       <div className={cn('card__footer')}>
@@ -72,7 +70,7 @@ function Card({ type, data }) {
         <div className={cn('card__price')}>
           Price:
           {' '}
-          <span>{getFormattedRUCurrency(priceAvg)}</span>
+          <span>{format('currency', priceAvg)}</span>
         </div>
       </div>
     </li>

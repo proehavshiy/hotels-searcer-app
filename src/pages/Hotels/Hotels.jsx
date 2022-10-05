@@ -11,13 +11,15 @@ import { initFetchHotels, initFetchImages } from '../../store/reducers/slices/ho
 
 import Card from '../../components/Card/Card';
 
-import { getFormattedRUDate } from '../../utils/getFormattedRUDate';
-
 import Slider from '../../components/Slider/Slider';
 
 import HotelForm from '../../components/HotelForm/HotelForm';
 
 import FavouriteHotels from '../../components/FavouriteHotels/FavouriteHotels';
+
+import getRUDeclination from '../../utils/wordDeclinations';
+
+import format from '../../utils/formatValues';
 
 import styles from './Hotels.module.scss';
 
@@ -28,28 +30,11 @@ function Hotels() {
   const searchParams = useSelector((state) => state.searchParams);
   const { fetched, favourites } = useSelector((state) => state.hotels);
 
-  // const { date, city, days } = searchParams;
-  // console.log('date', date)
-  // console.log('days', days)
-
-  // const [cityStatic] = useState(city);
-  // const [dateStatic] = useState(date);
-
   // начальная подгрузка отелей и картинок для слайдера
   useEffect(() => {
     dispatch(initFetchHotels(searchParams));
     dispatch(initFetchImages());
   }, [dispatch]);
-
-  function getHotelWordDeclination(formatter) {
-    if (formatter === 0 || formatter >= 5) {
-      return 'отелей';
-    }
-    if (formatter === 1) {
-      return 'отель';
-    }
-    return 'отеля';
-  }
 
   return (
     <>
@@ -69,7 +54,7 @@ function Hotels() {
                 {fetched.info.city}
               </h1>
               <div className={cn('date')}>
-                {fetched.info.date && getFormattedRUDate(fetched.info.date)}
+                {fetched.info.date && format('date', fetched.info.date)}
               </div>
             </div>
             <div className={cn('main-content__slider')}>
@@ -81,7 +66,7 @@ function Hotels() {
                 {' '}
                 <span>{favourites.ids.length}</span>
                 {' '}
-                {getHotelWordDeclination(favourites.ids.length)}
+                {getRUDeclination('hotel', favourites.ids.length)}
               </h2>
               <ul className={cn('hotels')}>
                 {fetched.hotels.length && fetched.hotels.map((hotel) => (
