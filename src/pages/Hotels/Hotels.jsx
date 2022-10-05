@@ -1,23 +1,14 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/jsx-curly-brace-presence */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Header from '../../components/Header/Header';
 import { initFetchHotels, initFetchImages } from '../../store/reducers/slices/hotels';
 
-import Card from '../../components/Card/Card';
-
+import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
-
 import HotelForm from '../../components/HotelForm/HotelForm';
-
 import FavouriteHotels from '../../components/FavouriteHotels/FavouriteHotels';
-
-import getRUDeclination from '../../utils/wordDeclinations';
+import SearchedHotels from '../../components/SearchedHotels/SearchedHotels';
 
 import format from '../../utils/formatValues';
 
@@ -28,7 +19,7 @@ const cn = classNames.bind(styles);
 function Hotels() {
   const dispatch = useDispatch();
   const searchParams = useSelector((state) => state.searchParams);
-  const { fetched, favourites } = useSelector((state) => state.hotels);
+  const { fetched } = useSelector((state) => state.hotels);
 
   // начальная подгрузка отелей и картинок для слайдера
   useEffect(() => {
@@ -60,28 +51,7 @@ function Hotels() {
             <div className={cn('main-content__slider')}>
               <Slider />
             </div>
-            <div className={cn('main-block')}>
-              <h2 className={cn('main-block__heading')}>
-                Добавлено в Избранное:
-                {' '}
-                <span>{favourites.ids.length}</span>
-                {' '}
-                {getRUDeclination('hotel', favourites.ids.length)}
-              </h2>
-              {fetched.hotels.length
-                ? (
-                  <ul className={cn('hotels')}>
-                    {fetched.hotels.map((hotel) => (
-                      <Card
-                        type={'main'}
-                        data={hotel}
-                        key={hotel.hotelId}
-                      />
-                    ))}
-                  </ul>
-                )
-                : <div className={cn('hotels-dummy')}>Отели не найдены</div>}
-            </div>
+            <SearchedHotels />
           </div>
         </div>
 
