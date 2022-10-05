@@ -1,0 +1,52 @@
+@import '../../assets/styles/styles.scss';
+
+.favourites {
+  max-height: 50%; // без него при добавлении избранных отелей ширина увеличивается. Пока хз как пофиксить
+  @include contentBlock;
+  // padding: 32px;
+  flex: 0 1 100%;
+  justify-content: flex-start;
+}
+
+.heading {
+  margin-bottom: 32px;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.17;
+}
+
+.filer-bar {
+  margin-bottom: 32px;
+  display: flex;
+  flex-flow: row wrap;
+
+  &>*:not(:last-of-type) {
+    margin-right: 8px;
+  }
+}
+
+.hotels {
+  padding-right: 14px;
+  overflow-y: auto;
+
+  // стили для скроллбара и трека
+  &::-webkit-scrollbar {
+    width: 2px;
+    background: #E7E7E7;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #41522E;
+    border-radius: 2px;
+  }
+}
+
+.hotels-placeholder {
+  margin: auto;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.17;
+  color: $colSecondaryText;
+  text-align: center;
+}

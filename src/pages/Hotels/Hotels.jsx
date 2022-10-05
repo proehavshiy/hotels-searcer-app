@@ -57,7 +57,7 @@ function Hotels() {
       <main className={cn('hotels-page')}>
         <div className={cn('content-wrapper')}>
           <div className={cn('aside')}>
-            <div className='search-form'>
+            <div className={cn('search-form')}>
               <HotelForm />
             </div>
             <FavouriteHotels />

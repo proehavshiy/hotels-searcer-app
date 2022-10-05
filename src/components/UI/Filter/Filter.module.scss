@@ -1,0 +1,71 @@
+@import '../../../assets/styles/styles.scss';
+
+@mixin activeFilter {
+  color: $colAccent;
+  border: 1px solid $colAccent;
+}
+
+@mixin activeButton {
+  path {
+    fill: $colAccent;
+  }
+}
+
+.filter {
+  padding: 4px 8px;
+  min-width: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: -0.408px;
+  color: #99A0A3;
+
+  background: $colBg;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  @include standartTransition(.3);
+
+  &>span {
+    margin-right: 4px;
+  }
+
+  &:hover {
+    @include activeFilter;
+  }
+
+  &_active {
+    @include activeFilter;
+  }
+}
+
+.filter__buttons-container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.filter__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  @include standartTransition(.5);
+
+  &:hover {
+    @include activeButton;
+  }
+
+  &_active {
+    @include activeButton;
+  }
+
+  &_max {
+    padding: 5px 5px 0 5px;
+  }
+
+  &_min {
+    padding: 0 5px 5px 5px;
+  }
+}

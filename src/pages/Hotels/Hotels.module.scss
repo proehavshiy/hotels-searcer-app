@@ -9,16 +9,29 @@
   max-width: 1048px;
   max-height: 906px;
 
-  @include contentBlock;
+  // @include contentBlock;
+  display: flex;
+  flex-direction: column;
   flex-direction: row;
+
+  &>*:not(:last-of-type) {
+    margin-right: 24px;
+  }
 }
 
 .aside {
   // max-width: 360px;
+  display: flex;
+  flex-direction: column;
+
+  &>*:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
 }
 
 .main-content {
   min-width: 664px;
+  @include contentBlock;
 
   &__slider {
     margin: 28px 0;

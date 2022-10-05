@@ -36,6 +36,13 @@
       "jsx-a11y"
     ],
     "rules": {
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allowAfterThis": true,
+          "enforceInClassFields": true
+        }
+      ],
       "react/prop-types": [
         "off"
       ],
@@ -85,7 +92,10 @@
       "max-len": [
         "error",
         {
-          "code": 120
+          "ignorePattern": "d='([\\s\\S]*?)'"
+        },
+        {
+          "code": 150
         }
       ],
       "comma-dangle": [
