@@ -47,7 +47,8 @@ function LoginForm() {
     <Form
       formHeading='Simple Hotel Check'
       submitCTA='Войти'
-      isSubmitDisabled={formik.errors.login || formik.errors.password}
+      // чтобы кнопка была disabled изначально и если невалидны поля
+      isSubmitDisabled={!formik.touched.login || !formik.touched.password || formik.errors.login || formik.errors.password}
       onSubmit={formik.handleSubmit}
     >
       <FormFieldset

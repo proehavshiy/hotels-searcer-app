@@ -11,14 +11,14 @@ function FormFieldset({
 }) {
   return (
     <fieldset className={cn('fieldset')}>
-      <label htmlFor={id} className={cn('label', { label_error: errorMessage })}>
+      <label htmlFor={id} className={cn('label', { label_error: isTouched && errorMessage })}>
         {labelPlaceholder}
       </label>
       <input
         type={type}
         name={name}
         id={id}
-        className={cn('input', { input_error: errorMessage })}
+        className={cn('input', { input_error: isTouched && errorMessage })}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

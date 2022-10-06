@@ -1,11 +1,12 @@
 @import '../../assets/styles/styles.scss';
 
 .hotels-page {
+  display: flex;
   position: relative;
 }
 
 .content-wrapper {
-  margin: 0 auto;
+  margin: 0 auto 30px;
   max-width: 1048px;
   max-height: 906px;
 
