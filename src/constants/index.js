@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import uniqid from 'uniqid';
 
 const URL = 'http://engine.hotellook.com/api/v2/cache.json';

@@ -10,6 +10,10 @@
     padding: 19px 16px 16px 88px;
     position: relative;
 
+    @media (max-width: $br3) {
+      padding: 19px 16px 16px 16px;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -24,6 +28,10 @@
       background-size: auto;
       background-color: rgba(65, 82, 46, 0.05);
       border-radius: 50%;
+
+      @media (max-width: $br3) {
+        display: none;
+      }
     }
   }
 
@@ -39,8 +47,10 @@
 }
 
 .card__heading {
+  max-width: 70%;
   font-size: 17px;
   letter-spacing: -0.408px;
+  @include extraTextHidden;
 }
 
 .card__like {
@@ -79,6 +89,10 @@
   line-height: 1.57;
   letter-spacing: -0.408px;
   color: $colSecondaryText;
+
+  @media (max-width: $br3) {
+    flex-direction: column;
+  }
 }
 
 .card__startDate {
@@ -93,6 +107,10 @@
     background: $colSecondaryText;
     width: 9px;
     height: 1px;
+
+    @media (max-width: $br3) {
+      display: none;
+    }
   }
 }
 
@@ -103,31 +121,6 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-
-// .card__stars {
-//   display: flex;
-
-//   & *:not(:last-of-type) {
-//     margin-right: 4px;
-//   }
-// }
-
-// .card__star {
-//   width: 17px;
-//   height: 17px;
-//   display: inline-block;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//   background-size: contain;
-
-//   &_active {
-//     background-image: url('../../images/star.svg');
-//   }
-
-//   &_default {
-//     background-image: url('../../images/star_default.svg');
-//   }
-// }
 
 .card__price {
   font-weight: 300;

@@ -1,10 +1,9 @@
 @import '../../assets/styles/styles.scss';
 
 .favourites {
-  max-height: 50%; // без него при добавлении избранных отелей ширина увеличивается. Пока хз как пофиксить
+  height: calc(50% + 24px);
+  max-height: 50%;
   @include contentBlock;
-  // padding: 32px;
-  flex: 0 1 100%;
   justify-content: flex-start;
 }
 

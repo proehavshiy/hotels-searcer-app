@@ -45,7 +45,12 @@ function Card({ type, data }) {
   return (
     <li className={cn('card', `card_${type}`)}>
       <div className={cn('card__header')}>
-        <h3 className={cn('card__heading')}>{hotelName}</h3>
+        <h3
+          className={cn('card__heading')}
+          title={hotelName}
+        >
+          {hotelName}
+        </h3>
         <button className={cn('card__like', { card__like_active: isLiked })} type='button' onClick={handleLike}>
           <svg width='23' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path

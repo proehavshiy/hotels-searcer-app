@@ -36,6 +36,9 @@
       "jsx-a11y"
     ],
     "rules": {
+      "react/jsx-no-bind": [
+        false
+      ],
       "no-underscore-dangle": [
         "error",
         {
