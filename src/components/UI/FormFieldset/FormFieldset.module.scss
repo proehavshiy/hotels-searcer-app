@@ -14,7 +14,7 @@
 
 .label {
   font-weight: 300;
-  font-size: 16px;
+  @include adaptive-font(16, 14);
   margin-bottom: 7px;
 
   @include standartTransition(.3);
@@ -33,6 +33,10 @@
 
   &_error {
     color: $colError;
+  }
+
+  @media (max-width: $br4) {
+    padding: 10px;
   }
 }
 

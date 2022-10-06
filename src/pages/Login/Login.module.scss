@@ -24,3 +24,9 @@
     backdrop-filter: blur(10px);
   }
 }
+
+.form-wrapper {
+  width: 90%;
+  max-width: 409px;
+  z-index: 1;
+}

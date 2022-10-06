@@ -1,9 +1,6 @@
 @import '../../../assets/styles/styles.scss';
 
 .form {
-  width: calc(409 / 1440 * 100vw);
-  min-width: 280px;
-  z-index: 10;
   @include contentBlock();
   align-items: space-between;
 }
@@ -12,6 +9,10 @@
   @include h1;
   text-align: center;
   margin-bottom: 32px;
+
+  @media (max-width: $br4) {
+    margin-bottom: 24px;
+  }
 }
 
 .fields-block {

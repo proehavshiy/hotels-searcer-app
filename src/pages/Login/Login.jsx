@@ -10,7 +10,9 @@ const cn = classNames.bind(styles);
 function Login() {
   return (
     <main className={cn('login-page')}>
-      <LoginForm />
+      <div className={cn('form-wrapper')}>
+        <LoginForm />
+      </div>
     </main>
   );
 }
