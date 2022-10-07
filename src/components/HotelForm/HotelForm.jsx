@@ -16,6 +16,7 @@ function HotelForm() {
     dispatch(setSearchParams({ city: e.target.value }));
   }
   function handleChangeDate(e) {
+    console.log('handleChangeDate', e);
     dispatch(setSearchParams({ date: new Date(e.target.value).getTime() }));
   }
   function handleChangeDys(e) {
@@ -51,7 +52,7 @@ function HotelForm() {
       />
       <FormFieldset
         labelPlaceholder='Количество дней'
-        type='days'
+        type='number'
         name='days'
         id='days'
         value={days}
