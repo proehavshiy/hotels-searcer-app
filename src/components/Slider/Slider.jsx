@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,6 +23,7 @@ function Slider() {
             spaceBetween={12}
             slidesPerView='auto'
             loop
+            scrollbar={{ draggable: true }}
           >
             {images.map((image) => (
               <SwiperSlide className={cn('slide')} key={image.id}>

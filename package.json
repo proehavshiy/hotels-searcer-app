@@ -38,6 +38,9 @@
       "jsx-a11y"
     ],
     "rules": {
+      "import/no-unresolved": [
+        0
+      ],
       "react/jsx-no-bind": [
         0
       ],
