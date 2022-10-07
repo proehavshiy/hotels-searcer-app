@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hotels-searcer-app/static/css/main.1d0d2bfd.css",
-    "main.js": "/hotels-searcer-app/static/js/main.3e51ba54.js",
+    "main.js": "/hotels-searcer-app/static/js/main.6d86eb75.js",
     "static/media/login_bg.jpg": "/hotels-searcer-app/static/media/login_bg.8694cb2fc5231cd424bc.jpg",
     "static/media/AktivGroteskCorp-Regular.woff": "/hotels-searcer-app/static/media/AktivGroteskCorp-Regular.9cc01aaafaf223cc7b6f.woff",
     "static/media/AktivGroteskCorp-Bold.woff": "/hotels-searcer-app/static/media/AktivGroteskCorp-Bold.43e69914564a51751cb4.woff",
@@ -19,10 +19,10 @@
     "static/media/calendar-today.svg": "/hotels-searcer-app/static/media/calendar-today.677b98fc80b9dc0c6f5e.svg",
     "static/media/hotels_heading_vector.svg": "/hotels-searcer-app/static/media/hotels_heading_vector.ecfc16f7a5f0685dc819.svg",
     "main.1d0d2bfd.css.map": "/hotels-searcer-app/static/css/main.1d0d2bfd.css.map",
-    "main.3e51ba54.js.map": "/hotels-searcer-app/static/js/main.3e51ba54.js.map"
+    "main.6d86eb75.js.map": "/hotels-searcer-app/static/js/main.6d86eb75.js.map"
   },
   "entrypoints": [
     "static/css/main.1d0d2bfd.css",
-    "static/js/main.3e51ba54.js"
+    "static/js/main.6d86eb75.js"
   ]
 }
