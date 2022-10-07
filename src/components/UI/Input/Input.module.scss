@@ -1,0 +1,36 @@
+@import '../../../assets/styles/styles.scss';
+
+// убирает стандартный дейтпикер хрома
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid $colBorders;
+  border-radius: 4px;
+
+  @include standartTransition(.3);
+
+  &_error {
+    color: $colError;
+  }
+
+  @media (max-width: $br4) {
+    padding: 10px;
+  }
+}
+
+.datepicker-icon {
+  width: 18px;
+  height: 18px;
+  background: url('../../../images/calendar-today.svg');
+  cursor: pointer;
+  border-radius: 3px;
+  @include standartTransition(.3);
+
+  &:hover {
+    background-color: $colBorders;
+  }
+}

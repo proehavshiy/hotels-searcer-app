@@ -9,20 +9,15 @@
 }
 
 .react-datepicker {
-  font-family: 'Aktiv Grotesk Corp', helvetica, arial, sans-serif !important;
-
-  display: inline-block;
-  position: relative;
-  color: #000;
-
-  background: #FFFFFF;
-
+  font-family: 'Aktiv Grotesk Corp', "Roboto",
+    sans-serif !important;
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.15);
   border: none;
   border-radius: 8px;
 }
 
-.react-datepicker__day--selected {
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
   background: #41522E;
   border: 2px solid #41522E;
   border-radius: 4px;
