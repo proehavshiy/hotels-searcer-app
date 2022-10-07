@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './components/App/App';
 
-console.log('store:', store);
-
 ReactDOM.render(
   <Provider store={store}>
     <Router basename='/'>

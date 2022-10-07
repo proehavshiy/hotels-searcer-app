@@ -1,6 +1,6 @@
 import uniqid from 'uniqid';
 
-const URL = 'http://engine.hotellook.com/api/v2/cache.json';
+const URL = 'https://engine.hotellook.com/api/v2/cache.json';
 
 const SLIDER_IMAGES = [
   {
