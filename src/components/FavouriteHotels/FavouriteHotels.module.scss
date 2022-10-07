@@ -1,15 +1,13 @@
 @import '../../assets/styles/styles.scss';
 
 .favourites {
-  height: calc(50% + 24px);
-  max-height: 50%;
+  height: 50%;
+  position: relative;
   @include contentBlock;
   justify-content: flex-start;
 }
 
 .heading {
-  margin-bottom: 32px;
-
   font-weight: 500;
   font-size: 32px;
   line-height: 1.17;
@@ -27,6 +25,7 @@
 
 .hotels {
   padding-right: 14px;
+  max-height: calc(288px - 32px);
   overflow-y: auto;
 
   // стили для скроллбара и трека
@@ -48,4 +47,54 @@
   line-height: 1.17;
   color: $colSecondaryText;
   text-align: center;
+}
+
+.collapse-button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -50%) rotate(180deg);
+  width: 30px;
+  height: 30px;
+  background-image: url('../../images/collapse-arrow.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: white;
+  border-radius: 100%;
+
+  @include standartTransition(.3);
+
+  &_collapsed {
+    transform: translate(50%, -50%);
+  }
+
+  &:hover {
+    background-color: $colBorders;
+  }
+
+  @media (max-width: $br3) {
+    display: block;
+  }
+}
+
+.content {
+  margin-top: 32px;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  // max-height нужен только для транзишна. С height транзишн не работает
+  max-height: 100%;
+
+  transition: all .2s linear;
+
+  &_collapsed {
+    margin-top: 0;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+  }
 }

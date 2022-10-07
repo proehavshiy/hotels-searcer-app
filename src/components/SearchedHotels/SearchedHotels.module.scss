@@ -2,7 +2,6 @@
 
 .searched {
   height: 100%;
-  // max-height: calc(100% - 240px);
   max-height: calc(563 / 906 * 100%);
   display: flex;
   flex-direction: column;
@@ -18,6 +17,10 @@
       font-weight: 500;
       color: $colAccent;
     }
+  }
+
+  @media (max-width: $br3) {
+    max-height: none;
   }
 }
 
