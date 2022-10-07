@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/hotels-searcer-app/static/css/main.1d0d2bfd.css",
+    "main.js": "/hotels-searcer-app/static/js/main.3e51ba54.js",
+    "static/media/login_bg.jpg": "/hotels-searcer-app/static/media/login_bg.8694cb2fc5231cd424bc.jpg",
+    "static/media/AktivGroteskCorp-Regular.woff": "/hotels-searcer-app/static/media/AktivGroteskCorp-Regular.9cc01aaafaf223cc7b6f.woff",
+    "static/media/AktivGroteskCorp-Bold.woff": "/hotels-searcer-app/static/media/AktivGroteskCorp-Bold.43e69914564a51751cb4.woff",
+    "static/media/Roboto-Medium.woff": "/hotels-searcer-app/static/media/Roboto-Medium.d79d71f8707b288eb15c.woff",
+    "static/media/Roboto-Regular.woff": "/hotels-searcer-app/static/media/Roboto-Regular.4ff804f2669f84b510fe.woff",
+    "static/media/Roboto-Light.woff": "/hotels-searcer-app/static/media/Roboto-Light.8863b947444bd7e20f88.woff",
+    "static/media/collapse-arrow.png": "/hotels-searcer-app/static/media/collapse-arrow.764544e0262158a9f2c5.png",
+    "static/media/Roboto-Medium.woff2": "/hotels-searcer-app/static/media/Roboto-Medium.fe3010c63ccb626c8649.woff2",
+    "static/media/Roboto-Regular.woff2": "/hotels-searcer-app/static/media/Roboto-Regular.2d4fa7c1cc9c3e688c85.woff2",
+    "static/media/Roboto-Light.woff2": "/hotels-searcer-app/static/media/Roboto-Light.450f323c0736cffc6041.woff2",
+    "static/media/star_default.svg": "/hotels-searcer-app/static/media/star_default.c44c187643b10d48879b.svg",
+    "static/media/house.svg": "/hotels-searcer-app/static/media/house.42c6ba05cf3eb32fbf7c.svg",
+    "static/media/star.svg": "/hotels-searcer-app/static/media/star.841a0b30b3d2243dec64.svg",
+    "index.html": "/hotels-searcer-app/index.html",
+    "static/media/calendar-today.svg": "/hotels-searcer-app/static/media/calendar-today.677b98fc80b9dc0c6f5e.svg",
+    "static/media/hotels_heading_vector.svg": "/hotels-searcer-app/static/media/hotels_heading_vector.ecfc16f7a5f0685dc819.svg",
+    "main.1d0d2bfd.css.map": "/hotels-searcer-app/static/css/main.1d0d2bfd.css.map",
+    "main.3e51ba54.js.map": "/hotels-searcer-app/static/js/main.3e51ba54.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d0d2bfd.css",
+    "static/js/main.3e51ba54.js"
+  ]
+}
