@@ -18,8 +18,8 @@ function HotelForm() {
   function handleChangeDate(e) {
     dispatch(setSearchParams({ date: new Date(e.target.value).getTime() }));
   }
-  function handleChangeDys(e) {
-    dispatch(setSearchParams({ days: e.target.value }));
+  function handleChangeDays(e) {
+    dispatch(setSearchParams({ days: Number(e.target.value) }));
   }
 
   function handleSubmit(e) {
@@ -54,8 +54,9 @@ function HotelForm() {
         type='number'
         name='days'
         id='days'
+        min={1}
         value={days}
-        onChange={handleChangeDys}
+        onChange={handleChangeDays}
       />
     </Form>
   );

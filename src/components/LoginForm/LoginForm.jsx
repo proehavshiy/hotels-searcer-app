@@ -53,7 +53,7 @@ function LoginForm() {
     >
       <FormFieldset
         labelPlaceholder='Логин'
-        type='text'
+        type='email'
         name='login'
         id='login'
         value={formik.values.login}

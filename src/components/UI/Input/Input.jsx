@@ -30,6 +30,7 @@ function Input({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        min={name === 'days' ? 1 : null}
       />
       {type === 'date'
         ? (
