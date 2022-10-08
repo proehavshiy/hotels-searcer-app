@@ -1,7 +1,7 @@
-const getFormattedRUCurrency = (price) => price.toLocaleString('ru-RU', {
+const getFormattedRUCurrency = (price) => Number.parseInt(price, 10).toLocaleString('ru-RU', {
   style: 'currency',
   currency: 'RUB',
-  minimumFractionDigits: 0,
+  minimumFractionDigits: 0, // не отбрасывает дробную часть в цифрах вида 7000.50
 });
 
 const getFormattedRUDate = (date) => {

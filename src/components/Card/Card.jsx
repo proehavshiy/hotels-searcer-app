@@ -66,15 +66,13 @@ function Card({ type, data }) {
       <div className={cn('card__dates')}>
         <span className={cn('card__startDate')}>{format('date', date)}</span>
         <span className={cn('card__days')}>
-          {days}
-          {getRUDeclination('day', days)}
+          {`${days} ${getRUDeclination('day', days)}`}
         </span>
       </div>
       <div className={cn('card__footer')}>
         <HotelStars stars={stars} />
         <div className={cn('card__price')}>
-          Price:
-          {' '}
+          {'Price: '}
           <span>{format('currency', priceAvg)}</span>
         </div>
       </div>
