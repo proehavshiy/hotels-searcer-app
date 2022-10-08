@@ -11,6 +11,8 @@ import { FavouriteHotelsForRendering } from '../../utils/FavouriteHotelsForRende
 
 import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 
+import CollapseButton from '../UI/CollapseButton/CollapseButton';
+
 import styles from './FavouriteHotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -30,11 +32,9 @@ function FavouriteHotels() {
 
   return (
     <div className={cn('favourites')}>
-      <button
-        className={cn('collapse-button', { 'collapse-button_collapsed': collapsed })}
-        type='button'
-        aria-label='collapse'
-        onClick={toggleCollapse}
+      <CollapseButton
+        isActive={collapsed}
+        handleClick={toggleCollapse}
       />
       <h2 className={cn('heading')}>Избранное</h2>
       <div className={cn('content-wrapper', 'collapsible-wrapper', { collapsed })}>

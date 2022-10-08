@@ -6,7 +6,7 @@
 }
 
 .content-wrapper {
-  margin: 0 auto 30px;
+  margin: 28px auto 30px;
   width: calc((360 + 24 + 664) / 1440 * 100vw);
   max-height: 906px;
   display: flex;
@@ -52,6 +52,7 @@
   }
 }
 
+
 .aside {
   display: flex;
   flex-direction: column;
@@ -62,6 +63,7 @@
 }
 
 .main-content {
+  position: relative;
   @include contentBlock;
   justify-content: flex-start;
   padding: 48px 32px;
@@ -76,7 +78,6 @@
 }
 
 .heading-block {
-  margin-bottom: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,3 +126,16 @@
 
   color: #41522E;
 }
+
+.hotels {
+  margin-top: 28px;
+
+  &>div {
+    height: 100%;
+  }
+}
+
+@include verticalCollapseBlockAnimation;
+// @media (max-width: $br1) {
+//   @include verticalCollapseBlockAnimation;
+// }

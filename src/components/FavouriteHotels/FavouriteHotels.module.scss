@@ -5,13 +5,6 @@
   position: relative;
   @include contentBlock;
   justify-content: flex-start;
-
-  // transform: scaleY(1);
-  // transition: all .2s linear;
-
-  // &_collapsed {
-  //   transform: scaleY(.1);
-  // }
 }
 
 .heading {
@@ -56,55 +49,35 @@
   text-align: center;
 }
 
-.collapse-button {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 50%;
-  transform: translate(50%, -50%) rotate(180deg);
-  width: 30px;
-  height: 30px;
-  background-image: url('../../images/collapse-arrow.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-color: white;
-  border-radius: 100%;
+// .collapse-button {
+//   display: none;
+//   position: absolute;
+//   top: 0;
+//   right: 50%;
+//   transform: translate(50%, -50%) rotate(180deg);
+//   width: 30px;
+//   height: 30px;
+//   background-image: url('../../images/collapse-arrow.png');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center center;
+//   background-color: white;
+//   border-radius: 100%;
 
-  @include standartTransition(.3);
+//   @include standartTransition(.3);
 
-  &_collapsed {
-    transform: translate(50%, -50%);
-  }
+//   &_collapsed {
+//     transform: translate(50%, -50%);
+//   }
 
-  &:hover {
-    background-color: $colBorders;
-  }
+//   &:hover {
+//     background-color: $colBorders;
+//   }
 
-  @media (max-width: $br3) {
-    display: block;
-  }
-}
-
-// обертка для сворачивания блока по кнопке
-// https: //stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
-.collapsible-wrapper {
-  overflow: hidden;
-}
-
-.collapsible {
-  transition: margin-bottom 0.6s cubic-bezier(0, 0, 0, 1);
-  margin-bottom: 0;
-  max-height: 1000000px;
-}
-
-.collapsible-wrapper.collapsed>.collapsible {
-  margin-bottom: -2000px;
-  transition: margin-bottom 0.6s cubic-bezier(1, 0, 1, 1),
-    visibility 0s 0.6s, max-height 0s 0.6s;
-  visibility: hidden;
-  max-height: 0;
-}
+//   @media (max-width: $br3) {
+//     display: block;
+//   }
+// }
 
 .content-wrapper {
   flex: 1 0 auto;
@@ -118,3 +91,7 @@
   display: flex;
   flex-direction: column;
 }
+
+// обертка для сворачивания блока по кнопке
+// https: //stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
+@include verticalCollapseBlockAnimation;
