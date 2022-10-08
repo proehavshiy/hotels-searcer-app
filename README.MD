@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hotels searher app
 
-## Available Scripts
+Поисковик отелей через [Travelpayouts API](https://support.travelpayouts.com/hc/ru/articles/115000343268-API-%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%20%D0%BE%D1%82%D0%B5%D0%BB%D0%B5%D0%B9#price)
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+[Посмотреть деплой](https://hotels-searcer-app.vercel.app/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![](https://raw.githubusercontent.com/proehavshiy/forgifs/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-08%20%D0%B2%2016.34.42.png)
 
-### `yarn test`
+<br/>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Экосистема
+* `JS ES6`
+* `React SPA`, `react-router-dom v6`
+* `redux`, `react-redux`, `redux-toolkit`, `Saga`, `redux-persist`, LocalStorage - стейт-менеджмент и кеширование данных
+* `formik` - валидация полей
+* `react-datepicker` - кастомный дейтпикер для выбора дат
+* `date-fns` - локализация дейтпикера
+* `swiper` - свайпер картинок
+* `uniqid` -  для уникальных айди
+* `sass`, `classnames` -  стили: переменные, миксины, вложенность и переиспользование стилей
+* `ESlint` - линтинг
+* `Vercel` - деплой
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Какие задачи сделал:
+- [x] `Вход по логину-паролю` с `валидацией полей`
+- [x] `Кеширование состояния` пользователя в localstorage
+- [x] `Получение отелей по API` из формы (город, дата, дни)
+- [x] `Отрисовка списков` найденных / избранных отелей
+- [x] Сохранение в избранное / удаление отелей
+- [x] `Сортировка по цене, по рейтингу` избранных отелей
+- [x] `Анимации блоков с меняющейся шириной`
+- [x] `UI-состояния`: hover, active, disabled и т.д.
+- [x] `Адаптивная верстка` с flex
+- [x] Кастомные utils для `работы с датами` и `склонениями слов`
+- [x] Кастомный хук для получения размеров доступного экрана
+### Подробнее:
+### Роутинг
+- [x] 3 страницы: Login, Hotels, ErrorPage
+- [x] Hotels - `protected route`: lдоступ только после логина
+### Формы
+- [x] `Валидация формы логина` через Formik
+- [x] Логин - любая почта
+- [x] Пароль - без кириллицы, минимум 8 символов
+- [x] Кнопка submit: disabled, если поля невалидны
+- [x] Кастомный `datepicker`
+### Redux Store
+- [x] Разбит на логические слайсы
+- [x] Асинхронные запросы к API через `saga`
+- [x] Стейт логина кешируется в `LocalStorage`
+### Обработка асинхронных состояний запросов к серверу
+- [x] Состояние до запроса - выводом полей "нет данных" в блоки
+- [x] Состояние ожидания - через попап и спиннер
+- [x] Состояние ошибки - через попап с выводом ошибки
+### Верстка
+- [x] `Адаптивная верстка` 320px => 1440px
+- [x] `Резиновые размеры шрифтов`
+- [x] `Раскрытие блоков по кнопке` на планшетных и мобильных разрешениях
+- [x] Состояния `hover` и `active` у UI-компонентов
+- [x] `Анимации блоков` с изменяющейся шириной (блоки "избранное" и "найденные отели")
+- [x] Блоки с ограничениями по высоте и `скроллбарами`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Reference
+* [ТЗ](https://drive.google.com/file/d/1Y43rzApovIgN5oyyuV4q9EifleUmdYK-/view?usp=sharing)
+* [Figma](https://www.figma.com/file/PxI4ycD6GMGSpxOZ2NbFBO/React-Test%2FSimple-Hotel-Check-(Copy)?node-id=0%3A1)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Команды:
+* clone branch with `git@github.com:proehavshiy/google-books-searcher.git`
+* `npm run build` - build final version
+* `npm run start` - start dev mode
