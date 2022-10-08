@@ -11,6 +11,8 @@ import { FavouriteHotelsForRendering } from '../../utils/FavouriteHotelsForRende
 
 import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 
+import CollapseButton from '../UI/CollapseButton/CollapseButton';
+
 import styles from './FavouriteHotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -24,43 +26,47 @@ function FavouriteHotels() {
   // если ширина доступного экрана менее 992, то по умолчанию блок с избранным скрыт
   const [collapsed, setCollapsed] = useState(width < 992);
 
+  function toggleCollapse() {
+    setCollapsed(!collapsed);
+  }
+
   return (
     <div className={cn('favourites')}>
-      <button
-        className={cn('collapse-button', { 'collapse-button_collapsed': collapsed })}
-        type='button'
-        aria-label='collapse'
-        onClick={() => setCollapsed(!collapsed)}
+      <CollapseButton
+        isActive={collapsed}
+        handleClick={toggleCollapse}
       />
       <h2 className={cn('heading')}>Избранное</h2>
-      <div className={cn('content', { content_collapsed: collapsed })}>
-        <div className={cn('filer-bar')}>
-          <Filter
-            name='Рейтинг'
-            filterStatus={filterState}
-            handleFilter={setFilterState}
-          />
-          <Filter
-            name='Цена'
-            filterStatus={filterState}
-            handleFilter={setFilterState}
-          />
+      <div className={cn('content-wrapper', 'collapsible-wrapper', { collapsed })}>
+        <div className={cn('content', 'collapsible')}>
+          <div className={cn('filer-bar')}>
+            <Filter
+              name='Рейтинг'
+              filterStatus={filterState}
+              handleFilter={setFilterState}
+            />
+            <Filter
+              name='Цена'
+              filterStatus={filterState}
+              handleFilter={setFilterState}
+            />
+          </div>
+          {
+            sortedFavouriteHotels.length
+              ? (
+                <ul className={cn('hotels')}>
+                  {sortedFavouriteHotels.map((hotel) => (
+                    <Card
+                      type='favourite'
+                      data={hotel}
+                      key={hotel.hotelId}
+                    />
+                  ))}
+                </ul>
+              )
+              : <p className={cn('hotels-placeholder')}>Список избранных пуст</p>
+          }
         </div>
-        {
-          sortedFavouriteHotels.length
-            ? (
-              <ul className={cn('hotels')}>
-                {sortedFavouriteHotels.map((hotel) => (
-                  <Card
-                    type='favourite'
-                    data={hotel}
-                    key={hotel.hotelId}
-                  />
-                ))}
-              </ul>
-            )
-            : <p className={cn('hotels-placeholder')}>Список избранных пуст</p>
-        }
       </div>
     </div>
   );

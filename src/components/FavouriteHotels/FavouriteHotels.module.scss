@@ -49,34 +49,40 @@
   text-align: center;
 }
 
-.collapse-button {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 50%;
-  transform: translate(50%, -50%) rotate(180deg);
-  width: 30px;
-  height: 30px;
-  background-image: url('../../images/collapse-arrow.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-color: white;
-  border-radius: 100%;
+// .collapse-button {
+//   display: none;
+//   position: absolute;
+//   top: 0;
+//   right: 50%;
+//   transform: translate(50%, -50%) rotate(180deg);
+//   width: 30px;
+//   height: 30px;
+//   background-image: url('../../images/collapse-arrow.png');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center center;
+//   background-color: white;
+//   border-radius: 100%;
 
-  @include standartTransition(.3);
+//   @include standartTransition(.3);
 
-  &_collapsed {
-    transform: translate(50%, -50%);
-  }
+//   &_collapsed {
+//     transform: translate(50%, -50%);
+//   }
 
-  &:hover {
-    background-color: $colBorders;
-  }
+//   &:hover {
+//     background-color: $colBorders;
+//   }
 
-  @media (max-width: $br3) {
-    display: block;
-  }
+//   @media (max-width: $br3) {
+//     display: block;
+//   }
+// }
+
+.content-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
@@ -84,17 +90,8 @@
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-
-  // max-height нужен только для транзишна. С height транзишн не работает
-  max-height: 100%;
-
-  transition: all .2s linear;
-
-  &_collapsed {
-    margin-top: 0;
-    max-height: 0;
-    visibility: hidden;
-    overflow: hidden;
-    opacity: 0;
-  }
 }
+
+// обертка для сворачивания блока по кнопке
+// https: //stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
+@include verticalCollapseBlockAnimation;
