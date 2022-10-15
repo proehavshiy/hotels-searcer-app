@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import { ru } from 'date-fns/esm/locale';
+
 import DatePicker from 'react-datepicker';
 
+import { APP_LOCALE } from '../../../../constants';
 import InputDefault from '../inputDefault/InputDefault';
 
 import styles from './InputDate.module.scss';
@@ -37,7 +38,7 @@ function InputDate({
         customInput={<button className={cn('datepicker-icon')} type='button' aria-label='pick-date' />}
         selected={new Date(value)}
         onChange={handleChangeDatePicker}
-        locale={ru}
+        locale={APP_LOCALE}
         minDate={Date.now()}
         todayButton='Сегодня'
         closeOnScroll

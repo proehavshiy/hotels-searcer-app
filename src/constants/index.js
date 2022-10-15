@@ -1,4 +1,5 @@
 import uniqid from 'uniqid';
+import { ru } from 'date-fns/esm/locale';
 
 const URL = 'https://engine.hotellook.com/api/v2/cache.json';
 
@@ -21,4 +22,6 @@ const SLIDER_IMAGES = [
   },
 ];
 
-export { URL, SLIDER_IMAGES };
+const APP_LOCALE = ru;
+
+export { URL, SLIDER_IMAGES, APP_LOCALE };
