@@ -37,8 +37,8 @@
   &:hover {
     opacity: .8;
   }
-}
 
-.logout-image {
-  margin-left: 15px;
+  & svg {
+    margin-left: 15px;
+  }
 }
