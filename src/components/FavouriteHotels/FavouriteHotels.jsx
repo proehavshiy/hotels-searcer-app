@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import Card from '../Card/Card';
 
-import Filter from '../UI/Filter/Filter';
+import FilterPanel from '../UI/FilterPanel/FilterPanel';
 
 import { FavouriteHotelsForRendering } from '../../utils/FavouriteHotelsForRendering';
 
@@ -40,12 +40,12 @@ function FavouriteHotels() {
       <div className={cn('content-wrapper', 'collapsible-wrapper', { collapsed })}>
         <div className={cn('content', 'collapsible')}>
           <div className={cn('filer-bar')}>
-            <Filter
+            <FilterPanel
               name='Рейтинг'
               filterStatus={filterState}
               handleFilter={setFilterState}
             />
-            <Filter
+            <FilterPanel
               name='Цена'
               filterStatus={filterState}
               handleFilter={setFilterState}

@@ -26,6 +26,8 @@
   background: $colBg;
   border: 1px solid #E5E5E5;
   border-radius: 4px;
+
+  cursor: pointer;
   @include standartTransition(.3);
 
   &>span {
@@ -52,10 +54,6 @@
   align-items: center;
   background: transparent;
   @include standartTransition(.5);
-
-  &:hover {
-    @include activeButton;
-  }
 
   &_active {
     @include activeButton;

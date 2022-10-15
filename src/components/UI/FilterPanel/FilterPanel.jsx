@@ -4,11 +4,11 @@ import classNames from 'classnames/bind';
 import IconMax from '../Icons/IconMax';
 import IconMin from '../Icons/IconMin';
 
-import styles from './Filter.module.scss';
+import styles from './FilterPanel.module.scss';
 
 const cn = classNames.bind(styles);
 
-function Filter({ name, filterStatus, handleFilter }) {
+function FilterPanel({ name, filterStatus, handleFilter }) {
   const filterStyles = cn('filter', { filter_active: filterStatus.name === name });
   const buttonMaxStyles = cn(
     'filter__button',
@@ -21,22 +21,31 @@ function Filter({ name, filterStatus, handleFilter }) {
     { filter__button_active: filterStatus.name === name && filterStatus.filterParam === 'min' },
   );
 
-  const handleMax = () => handleFilter({ name, filterParam: 'max' });
-  const handleMin = () => handleFilter({ name, filterParam: 'min' });
+  const handleFilterPanel = () => {
+    if (filterStatus.filterParam === 'min') {
+      handleFilter({ name, filterParam: 'max' });
+    } else {
+      handleFilter({ name, filterParam: 'min' });
+    }
+  };
+
+  const handleKeyDown = (evt) => {
+    if (evt.code === 'Enter') handleFilterPanel();
+  };
 
   return (
-    <div className={filterStyles}>
+    <div className={filterStyles} onClick={handleFilterPanel} onKeyDown={handleKeyDown} role='button' tabIndex={0}>
       <span>{name}</span>
       <div className={cn('filter__buttons-container')}>
-        <button className={buttonMaxStyles} type='button' aria-label='max' onClick={handleMax}>
+        <span className={buttonMaxStyles}>
           <IconMax />
-        </button>
-        <button className={buttonMinStyles} type='button' aria-label='min' onClick={handleMin}>
+        </span>
+        <span className={buttonMinStyles}>
           <IconMin />
-        </button>
+        </span>
       </div>
     </div>
   );
 }
 
-export default Filter;
+export default FilterPanel;
