@@ -1,4 +1,4 @@
-@import '../../../assets/styles/styles.scss';
+@import '../../../../assets/styles/styles.scss';
 
 // убирает стандартный дейтпикер хрома
 .input[type="date"]::-webkit-calendar-picker-indicator {
@@ -25,7 +25,7 @@
 .datepicker-icon {
   width: 18px;
   height: 18px;
-  background: url('../../../images/calendar-today.svg');
+  background: url('../../../../images/calendar-today.svg');
   cursor: pointer;
   border-radius: 3px;
   @include standartTransition(.3);

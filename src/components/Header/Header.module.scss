@@ -10,6 +10,7 @@
   @include h1;
   cursor: pointer;
   @include standartTransition(.3);
+  white-space: nowrap;
 
   &:hover {
     opacity: .8;
