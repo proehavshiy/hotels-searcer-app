@@ -17,10 +17,12 @@ import styles from './FavouriteHotels.module.scss';
 
 const cn = classNames.bind(styles);
 function FavouriteHotels() {
-  const { items } = useSelector((state) => state.hotels.favourites);
+  const { favourites } = useSelector((state) => state.hotels);
+  const { hotels } = useSelector((state) => state.hotels.fetched);
   const [filterState, setFilterState] = useState({ name: null, filterParam: null });
 
-  const sortedFavouriteHotels = new FavouriteHotelsForRendering(items).sortByParam(filterState).data;
+  const favouriteHotels = hotels.filter((hotel) => favourites.includes(hotel.hotelId));
+  const sortedFavouriteHotels = new FavouriteHotelsForRendering(favouriteHotels).sortByParam(filterState).data;
 
   const { width } = useWindowDimensions();
   // если ширина доступного экрана менее 992, то по умолчанию блок с избранным скрыт

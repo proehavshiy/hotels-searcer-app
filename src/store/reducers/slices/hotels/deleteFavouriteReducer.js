@@ -1,13 +1,8 @@
 function deleteFavouriteReducer(state, { payload }) {
-  const favouriteHotelIds = state.favourites.ids.filter((id) => id !== payload);
-  const favouriteHotels = state.favourites.items.filter((hotel) => favouriteHotelIds.includes(hotel.hotelId));
-
+  const favouriteHotelIds = state.favourites.filter((id) => id !== payload);
   return {
     ...state,
-    favourites: {
-      ids: favouriteHotelIds,
-      items: favouriteHotels,
-    },
+    favourites: favouriteHotelIds,
   };
 }
 

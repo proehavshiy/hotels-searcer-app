@@ -10,10 +10,7 @@ const initialState = {
     hotels: [],
     info: { city: '', date: null, days: null },
   },
-  favourites: {
-    ids: [],
-    items: [],
-  },
+  favourites: [],
   images: [],
 };
 

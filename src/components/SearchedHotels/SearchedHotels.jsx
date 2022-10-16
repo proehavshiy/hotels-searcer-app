@@ -18,9 +18,9 @@ function SearchedHotels() {
       <h2 className={cn('searched__heading')}>
         Добавлено в Избранное:
         {' '}
-        <span>{favourites.ids.length}</span>
+        <span>{favourites.length}</span>
         {' '}
-        {getRUDeclination('hotel', favourites.ids.length)}
+        {getRUDeclination('hotel', favourites.length)}
       </h2>
       {fetched.hotels.length
         ? (

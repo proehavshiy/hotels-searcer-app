@@ -15,8 +15,8 @@ function Like({ currentId }) {
   const dispatch = useDispatch();
 
   // стейт с айдишками избранных-лайкнутых
-  const { ids } = useSelector((state) => state.hotels.favourites);
-  const [isLiked, setIsLiked] = useState(ids.includes(currentId));
+  const { favourites } = useSelector((state) => state.hotels);
+  const [isLiked, setIsLiked] = useState(favourites.includes(currentId));
 
   function handleLike() {
     if (isLiked) {
@@ -28,12 +28,12 @@ function Like({ currentId }) {
 
   // Переключение лайка
   useEffect(() => {
-    if (ids.includes(currentId)) {
+    if (favourites.includes(currentId)) {
       setIsLiked(true);
     } else {
       setIsLiked(false);
     }
-  }, [ids, currentId]);
+  }, [favourites, currentId]);
 
   return (
     <button className={cn('like', { like_active: isLiked })} type='button' onClick={handleLike}>
