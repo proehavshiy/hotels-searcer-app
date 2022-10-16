@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames/bind';
 
 import uniqid from 'uniqid';
@@ -8,7 +8,7 @@ import styles from './HotelStars.module.scss';
 const cn = classNames.bind(styles);
 
 function HotelStars({ stars }) {
-  function renderStars(numOfStars) {
+  const renderStars = useCallback((numOfStars) => {
     const markupContainer = [];
     for (let index = 0; index < 5; index += 1) {
       if (index < numOfStars) {
@@ -18,7 +18,7 @@ function HotelStars({ stars }) {
       }
     }
     return markupContainer;
-  }
+  }, [stars]);
 
   return (
     <div className={cn('stars')}>

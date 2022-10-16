@@ -68,7 +68,6 @@ function FavouriteHotels() {
                   ))}
                 </ul>
               )
-              // : <p className={cn('hotels-placeholder')}>Список избранных пуст</p>
               : <DataPlaceholder>Список избранных пуст</DataPlaceholder>
           }
         </div>

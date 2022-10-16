@@ -8,25 +8,7 @@ import Form from '../UI/Form/Form';
 import FormFieldset from '../UI/FormFieldset/FormFieldset';
 
 import { initUserLogin } from '../../store/reducers/slices/user';
-
-const validate = (values) => {
-  const errors = {};
-  if (!values.login) {
-    errors.login = 'Поле обязательное';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.login)) {
-    errors.login = 'Введите емейл';
-  }
-
-  if (!values.password) {
-    errors.password = 'Поле обязательное';
-  } else if (/[ЁёА-я]/g.test(values.password)) {
-    errors.password = 'Не должно быть кириллицы';
-  } else if (values.password.length <= 8) {
-    errors.password = 'Пароль - минимум 8 симв.';
-  }
-
-  return errors;
-};
+import validateLoginForm from '../../utils/validateLoginForm';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -36,9 +18,9 @@ function LoginForm() {
       login: '',
       password: '',
     },
-    validate,
+    validate: validateLoginForm,
+    // values - {login: Iemail; password: string}
     onSubmit: (values) => {
-      // values - {login: Iemail; password: string}
       dispatch(initUserLogin(values));
     },
   });
@@ -48,7 +30,7 @@ function LoginForm() {
       formHeading='Simple Hotel Check'
       submitCTA='Войти'
       // чтобы кнопка была disabled изначально и если невалидны поля
-      isSubmitDisabled={!formik.touched.login || !formik.touched.password || formik.errors.login || formik.errors.password}
+      isSubmitDisabled={(!formik.touched.login && !formik.touched.password) || formik.errors.login || formik.errors.password}
       onSubmit={formik.handleSubmit}
     >
       <FormFieldset
