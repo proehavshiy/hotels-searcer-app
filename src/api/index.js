@@ -33,3 +33,22 @@ export const fetchImages = async ({ searchParam }) => {
 
   return responseData;
 };
+
+// eslint-disable-next-line no-unused-vars
+export const fetchLogin = async ({ loginParams }) => {
+  let responseData;
+
+  await new Promise((resolve, reject) => {
+    const flag = true;
+    if (flag) {
+      setTimeout(() => {
+        responseData = { isLogined: true };
+        resolve();
+      }, 2000);
+    } else {
+      reject(new Error('Ошибка логина'));
+    }
+  });
+
+  return responseData;
+};

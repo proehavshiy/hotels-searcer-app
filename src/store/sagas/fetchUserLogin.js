@@ -1,22 +1,25 @@
 import {
-  put, takeEvery, delay,
+  put, takeEvery, call,
 } from 'redux-saga/effects';
+
+import { fetchLogin } from '../../api';
 
 import { setError, setIsLoading } from '../reducers/slices/duty';
 
 import { setIsLogined } from '../reducers/slices/user';
 
 // payload - {login: Iemail; password: string}
-// eslint-disable-next-line no-unused-vars
 function* workerUserLogin({ payload }) {
   // в данном случае он не нужен, но в реальной задаче эти данные уходят на сервер
   try {
     // загрузка началась...
     yield put(setIsLoading({ type: 'auth', isLoading: true }));
-    // мок асинхронного запроса к серверу при логине
-    yield delay(2000);
+    // запрос к серверу при логине
+    const loginResponse = yield call(fetchLogin, { loginParams: payload });
+    // если сервер вернул ошибку
+    if (loginResponse.status === 'error') throw new Error(loginResponse.message);
     // диспатч статуса логина - залогинен
-    yield put(setIsLogined(true));
+    yield put(setIsLogined(loginResponse.isLogined));
   } catch (error) {
     // диспатч статуса логина - незалогинен
     yield put(setIsLogined(false));
