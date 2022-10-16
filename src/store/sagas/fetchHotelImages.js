@@ -1,22 +1,22 @@
 import {
-  put, takeEvery, delay,
+  put, takeEvery, call, delay,
 } from 'redux-saga/effects';
 
-import { SLIDER_IMAGES } from '../../constants';
+import { fetchImages } from '../../api';
 
 import { setError, setIsLoading } from '../reducers/slices/duty';
 import { setFetchedImages } from '../reducers/slices/hotels';
 
-// eslint-disable-next-line no-unused-vars
 function* workerHotelImages({ payload }) {
-  // в данном случае он не нужен, но в реальной задаче я бы получал картинки с сервера по поисковому слову, например
   try {
     // загрузка началась...
     yield put(setIsLoading(true));
-    // мок асинхронного запроса к серверу
-    yield delay(2000);
+    // запрос на сервер за картинками
+    const images = yield call(fetchImages, { searchParam: payload });
+    // если сервер вернул ошибку
+    if (images.status === 'error') throw new Error(images.message);
     // диспатч полученных от сервера картинок
-    yield put(setFetchedImages(SLIDER_IMAGES));
+    yield put(setFetchedImages(images));
   } catch (error) {
     // диспатч ошибки
     yield put(setError(error.message));
