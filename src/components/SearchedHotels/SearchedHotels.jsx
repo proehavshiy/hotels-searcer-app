@@ -7,6 +7,8 @@ import Card from '../Card/Card';
 
 import getRUDeclination from '../../utils/wordDeclinations';
 
+import DataPlaceholder from '../UI/DataPlaceholder/DataPlaceholder';
+
 import styles from './SearchedHotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -17,9 +19,7 @@ function SearchedHotels() {
     <div className={cn('searched')}>
       <h2 className={cn('searched__heading')}>
         Добавлено в Избранное:
-        {' '}
         <span>{favourites.length}</span>
-        {' '}
         {getRUDeclination('hotel', favourites.length)}
       </h2>
       {fetched.hotels.length
@@ -34,7 +34,7 @@ function SearchedHotels() {
             ))}
           </ul>
         )
-        : <div className={cn('hotels-placeholder')}>Отели не найдены</div>}
+        : <DataPlaceholder>Список отелей пуст</DataPlaceholder>}
     </div>
   );
 }

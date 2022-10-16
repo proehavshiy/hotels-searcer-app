@@ -6,30 +6,25 @@ import { setError, setIsLoading } from '../reducers/slices/duty';
 
 import { setIsLogined } from '../reducers/slices/user';
 
+// payload - {login: Iemail; password: string}
 // eslint-disable-next-line no-unused-vars
 function* workerUserLogin({ payload }) {
-  // payload - {login: Iemail; password: string}
   // в данном случае он не нужен, но в реальной задаче эти данные уходят на сервер
   try {
     // загрузка началась...
-    yield put(setIsLoading(true));
+    yield put(setIsLoading({ type: 'auth', isLoading: true }));
     // мок асинхронного запроса к серверу при логине
     yield delay(2000);
-    // throw new Error('fgfgfgfg')
     // диспатч статуса логина - залогинен
     yield put(setIsLogined(true));
   } catch (error) {
     // диспатч статуса логина - незалогинен
     yield put(setIsLogined(false));
     // диспатч ошибки
-    yield put(setError(error.message));
+    yield put(setError({ type: 'auth', error: error.message }));
   } finally {
     // загрузка завершилась
-    yield put(setIsLoading(false));
-
-    // сброс ошибки через 2 сек НО надо бы как-то это вызывать только в случае ошибки
-    yield delay(2000);
-    yield yield put(setError(null));
+    yield put(setIsLoading({ type: 'auth', isLoading: false }));
   }
 }
 

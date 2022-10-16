@@ -13,6 +13,8 @@ import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 
 import CollapseButton from '../UI/CollapseButton/CollapseButton';
 
+import DataPlaceholder from '../UI/DataPlaceholder/DataPlaceholder';
+
 import styles from './FavouriteHotels.module.scss';
 
 const cn = classNames.bind(styles);
@@ -66,7 +68,8 @@ function FavouriteHotels() {
                   ))}
                 </ul>
               )
-              : <p className={cn('hotels-placeholder')}>Список избранных пуст</p>
+              // : <p className={cn('hotels-placeholder')}>Список избранных пуст</p>
+              : <DataPlaceholder>Список избранных пуст</DataPlaceholder>
           }
         </div>
       </div>

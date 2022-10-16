@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable no-cond-assign */
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import {
   Routes, Route, Navigate, useNavigate, useLocation,
@@ -9,7 +5,7 @@ import {
 
 import classNames from 'classnames/bind';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Login from '../../pages/Login/Login';
 import Hotels from '../../pages/Hotels/Hotels';
@@ -19,16 +15,25 @@ import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 
 import Modal from '../UI/Modal/Modal';
 
-// import { setError } from '../../store/reducers/slices/duty';
+import DataPlaceholder from '../UI/DataPlaceholder/DataPlaceholder';
+
+import { setError } from '../../store/reducers/slices/duty';
 
 import styles from './App.module.scss';
 
 const cn = classNames.bind(styles);
 
 function App() {
-  // const dispatch = useDispatch();
-  const { isLoading, error } = useSelector((state) => state.duty);
+  const dispatch = useDispatch();
+  const { isLoading: hotelsIsLoading, error: hotelsError } = useSelector((state) => state.duty.hotels);
+  const { isLoading: authIsLoading, error: authError } = useSelector((state) => state.duty.auth);
+
   const { isLogined } = useSelector((state) => state.user);
+
+  function handleFetchError() {
+    if (hotelsError) dispatch(setError({ type: 'hotels', error: null }));
+    if (authError) dispatch(setError({ type: 'auth', error: null }));
+  }
 
   const history = useNavigate();
   const currentPage = useLocation().pathname;
@@ -48,7 +53,7 @@ function App() {
         />
         <Route
           path='/hotels'
-          element={isLogined ? <Hotels /> : <Navigate to='/' replace={true} />}
+          element={isLogined ? <Hotels /> : <Navigate to='/' replace />}
         />
         <Route
           path='*'
@@ -56,14 +61,16 @@ function App() {
         />
       </Routes>
       <Modal
-        isOpen={isLoading}
+        isOpen={hotelsIsLoading || authIsLoading}
       >
         <LoadingSpinner />
       </Modal>
       <Modal
-        isOpen={error}
+        isOpen={hotelsError || authError}
+        type='error'
+        handleClick={handleFetchError}
       >
-        <div>{error}</div>
+        <DataPlaceholder>Не&nbsp; удалось загрузить данные. Попробуйте снова</DataPlaceholder>
       </Modal>
     </div>
   );

@@ -1,5 +1,5 @@
 import {
-  put, takeEvery, call, delay,
+  put, takeEvery, call,
 } from 'redux-saga/effects';
 
 import { fetchImages } from '../../api';
@@ -10,7 +10,8 @@ import { setFetchedImages } from '../reducers/slices/hotels';
 function* workerHotelImages({ payload }) {
   try {
     // загрузка началась...
-    yield put(setIsLoading(true));
+    // yield put(setIsLoading(true));
+    yield put(setIsLoading({ type: 'images', isLoading: true }));
     // запрос на сервер за картинками
     const images = yield call(fetchImages, { searchParam: payload });
     // если сервер вернул ошибку
@@ -19,10 +20,14 @@ function* workerHotelImages({ payload }) {
     yield put(setFetchedImages(images));
   } catch (error) {
     // диспатч ошибки
-    yield put(setError(error.message));
+    // yield put(setError(error.message));
+    yield put(setError({ type: 'images', error: error.message }));
   } finally {
-    yield delay(2000);
-    yield yield put(setError(null));
+    // загрузка завершилась
+    // yield put(setIsLoading(false));
+    // yield yield put(setError(null));
+    yield put(setIsLoading({ type: 'images', isLoading: false }));
+    // yield put(setError({ type: 'images', error: null }));
   }
 }
 

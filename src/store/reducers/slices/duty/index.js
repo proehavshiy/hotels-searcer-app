@@ -1,22 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import setErrorReducer from './SetErrorReducer';
+import setIsLoadingReducer from './SetIsLoadingReducer';
+
 const initialState = {
-  error: null,
-  isLoading: false,
+  hotels: {
+    error: null,
+    isLoading: false,
+  },
+  images: {
+    error: null,
+    isLoading: false,
+  },
+  auth: {
+    error: null,
+    isLoading: false,
+  },
 };
 
 const dutySlice = createSlice({
   name: 'duty',
   initialState,
   reducers: {
-    setError: (state, { payload }) => ({
-      ...state,
-      error: payload,
-    }),
-    setIsLoading: (state, { payload }) => ({
-      ...state,
-      isLoading: payload,
-    }),
+    setError: setErrorReducer,
+    setIsLoading: setIsLoadingReducer,
   },
 });
 

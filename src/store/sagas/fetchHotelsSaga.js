@@ -1,5 +1,5 @@
 import {
-  call, put, takeEvery, delay,
+  call, put, takeEvery,
 } from 'redux-saga/effects';
 
 import { fetchHotels } from '../../api';
@@ -12,7 +12,7 @@ function* workerFetchHotels({ payload }) {
 
   try {
     // загрузка началась...
-    yield put(setIsLoading(true));
+    yield put(setIsLoading({ type: 'hotels', isLoading: true }));
     // вызов сайд-эффекта - запрос к серверу
     const hotels = yield call(fetchHotels, { city, date, days });
     // если сервер вернул ошибку
@@ -21,14 +21,10 @@ function* workerFetchHotels({ payload }) {
     yield put(setFetchedHotels({ hotels, info: { city, date, days } }));
   } catch (error) {
     // диспатч ошибки
-    yield put(setError(error.message));
+    yield put(setError({ type: 'hotels', error: error.message }));
   } finally {
     // загрузка завершилась
-    yield put(setIsLoading(false));
-
-    // сброс ошибки через 2 сек НО надо бы как-то это вызывать только в случае ошибки
-    yield delay(2000);
-    yield yield put(setError(null));
+    yield put(setIsLoading({ type: 'hotels', isLoading: false }));
   }
 }
 
